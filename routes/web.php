@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return redirect('/home');
+// });
+
+// Route::group(['prefix' => 'home'], function () {
+//     Route::get('/', function () {
+//         return view('home');
+//     })->name('home');
+// });
+
+Auth::routes(['register' => false],);
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::redirect('/', '/admin/login');
+    Route::group(['middleware' => 'guest'], function () {
+        Route::get('/login', function () {
+            return view('auth.login');
+        });
+    });
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => '/admin', 'middleware' => ['auth']], function () {
+    Route::get('/dashboard', [WebController::class, 'admin'])->name('admin.dashboard');
+});
