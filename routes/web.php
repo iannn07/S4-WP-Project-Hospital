@@ -25,7 +25,7 @@ use App\Http\Controllers\WebController;
 //     })->name('home');
 // });
 
-Auth::routes(['register' => false],);
+Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin'], function () {
     Route::redirect('/', '/admin/login');
@@ -36,7 +36,7 @@ Route::group(['prefix' => 'admin'], function () {
     });
 });
 
-
 Route::group(['prefix' => '/admin', 'middleware' => ['auth']], function () {
     Route::get('/dashboard', [WebController::class, 'admin'])->name('admin.dashboard');
+    Route::get('/profile', [WebController::class, 'profile'])->name('admin.profile');
 });
