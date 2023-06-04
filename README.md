@@ -5,7 +5,7 @@ This project was developed for our final task in Web Programming Course which we
 
 #### ERD
 
-![ERD](ERD HMS.png)
+![ERD](https://github.com/iannn07/S4-WP-Project-Hospital/blob/main/ERD%20HMS.png)
 
 #### Credits
 Login Page  : https://colorlib.com/wp/template/login-form-v16/
