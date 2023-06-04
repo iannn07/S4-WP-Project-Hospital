@@ -5,7 +5,7 @@ This project was developed for our final task in Web Programming Course which we
 
 #### ERD
 
-![ERD](ERD HMS.drawio.png)
+![ERD](ERD HMS.png)
 
 #### Credits
 Login Page  : https://colorlib.com/wp/template/login-form-v16/
