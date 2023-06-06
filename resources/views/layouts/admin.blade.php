@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <title>HMS Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -127,13 +127,13 @@
                         data-bs-toggle="dropdown">
                         <img src="{{ asset('admin_assets/img/profile-img.png') }}" alt="Profile"
                             class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{ $user->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Admin</h6>
-                            <span>Receptionist</span>
+                            <h6>{{ $user->name }}</h6>
+                            <span>{{ $user->role }}</span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">

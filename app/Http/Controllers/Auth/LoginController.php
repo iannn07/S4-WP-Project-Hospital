@@ -46,4 +46,9 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect('/admin/login');
     }
+
+    public function showLoginForm()
+    {
+        return redirect('/admin/login');
+    }
 }
