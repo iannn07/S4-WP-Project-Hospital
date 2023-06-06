@@ -20,16 +20,16 @@
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-faq.html">
+                <a class="nav-link collapsed" href="{{ route('admin.faq') }}">
                     <i class="bi bi-question-circle"></i>
                     <span>F.A.Q</span>
                 </a>
             </li><!-- End F.A.Q Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-contact.html">
+                <a class="nav-link collapsed" href="mailto: pristian.dharmawan@binus.ac.id">
                     <i class="bi bi-envelope"></i>
-                    <span>Contact</span>
+                    <span>Contact Me</span>
                 </a>
             </li><!-- End Contact Page Nav -->
         </ul>

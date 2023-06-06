@@ -16,4 +16,9 @@ class WebController extends Controller
         $user = User::find(auth()->user()->id);
         return view('admin_profile', compact('user'));
     }
+    public function faq(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        return view('admin_faq', compact('user'));
+    }
 }
