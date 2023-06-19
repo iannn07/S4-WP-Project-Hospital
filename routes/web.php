@@ -46,3 +46,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth']], function () {
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('admin.profile.update');
     Route::get('/doctorTable', [WebController::class, 'doctor_table'])->name('admin.doctor.table');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
