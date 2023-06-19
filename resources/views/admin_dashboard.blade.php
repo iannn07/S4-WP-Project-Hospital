@@ -4,7 +4,7 @@
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
-
+            <li class="nav-heading">Hospital Account</li>
             <li class="nav-item">
                 <a class="nav-link " href="{{ route('admin.dashboard') }}">
                     <i class="bi bi-grid"></i>
@@ -32,6 +32,12 @@
                     <span>Contact Me</span>
                 </a>
             </li><!-- End Contact Page Nav -->
+
+            <li class="nav-heading">Hospital Data</li>
+
+            <a class="nav-link collapsed" href="{{ route('admin.doctor.table') }}">
+                <i class="bi bi-table"></i><span>Doctor Data</span>
+            </a>
         </ul>
 
     </aside><!-- End Sidebar-->

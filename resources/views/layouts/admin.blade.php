@@ -178,7 +178,6 @@
 
             </ul>
         </nav><!-- End Icons Navigation -->
-
     </header><!-- End Header -->
     @yield('header')
 </body>

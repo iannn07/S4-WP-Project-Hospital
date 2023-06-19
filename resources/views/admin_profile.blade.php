@@ -4,7 +4,7 @@
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
-
+            <li class="nav-heading">Hospital Account</li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admin.dashboard') }}">
                     <i class="bi bi-grid"></i>
@@ -32,6 +32,12 @@
                     <span>Contact</span>
                 </a>
             </li><!-- End Contact Page Nav -->
+
+            <li class="nav-heading">Hospital Data</li>
+
+            <a class="nav-link collapsed" href="{{ route('admin.doctor.table') }}">
+                <i class="bi bi-table"></i><span>Doctor Data</span>
+            </a>
         </ul>
 
     </aside><!-- End Sidebar-->
@@ -104,6 +110,19 @@
                                 <form action="{{ route('admin.profile.update') }}" method="POST">
                                     @csrf
                                     @method('put')
+                                    <div class="row mb-3">
+                                        <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile
+                                            Image</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <img src="{{ asset('admin_assets/img/profile-img.png') }}" alt="Profile">
+                                            <div class="pt-2">
+                                                <a href="#" class="btn btn-primary btn-sm"
+                                                    title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                                                <a href="#" class="btn btn-danger btn-sm"
+                                                    title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row mb-3">
                                         <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Name</label>
                                         <div class="col-md-8 col-lg-9">

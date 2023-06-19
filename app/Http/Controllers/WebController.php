@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -20,5 +21,11 @@ class WebController extends Controller
     {
         $user = User::find(auth()->user()->id);
         return view('admin_faq', compact('user'));
+    }
+    public function doctor_table(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $doctor = Doctor::all();
+        return view('admin_doctor_data', compact('user', 'doctor'));
     }
 }
