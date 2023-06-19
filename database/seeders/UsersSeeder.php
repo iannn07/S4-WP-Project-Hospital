@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Ramsey\Uuid\Uuid;
 
 class UsersSeeder extends Seeder
 {
@@ -15,6 +16,7 @@ class UsersSeeder extends Seeder
     {
         User::insert([
             [
+                'id' => Uuid::uuid4()->toString(),
                 'name' => 'Admin',
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('roottoor'),
@@ -22,6 +24,7 @@ class UsersSeeder extends Seeder
                 'role' => 'Admin',
             ],
             [
+                'id' => Uuid::uuid4()->toString(),
                 'name' => 'Doctor',
                 'email' => 'doctor@gmail.com',
                 'password' => bcrypt('toorroot'),
