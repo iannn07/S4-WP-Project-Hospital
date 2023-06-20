@@ -8,7 +8,12 @@ use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
-    public function admin(Request $request){
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function dashboard(Request $request)
+    {
         $user = User::find(auth()->user()->id);
         return view('admin_dashboard', compact('user'));
     }

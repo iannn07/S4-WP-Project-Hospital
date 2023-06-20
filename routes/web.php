@@ -39,18 +39,18 @@ Route::group(['prefix' => 'admin'], function () {
     });
 });
 
-Route::group(['prefix' => '/admin', 'middleware' => ['auth']], function () {
-    Route::get('/dashboard', [WebController::class, 'admin'])->name('admin.dashboard');
+Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:Admin']], function () {
+    Route::get('/dashboard', [WebController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/profile', [WebController::class, 'profile'])->name('admin.profile');
     Route::get('/faq', [WebController::class, 'faq'])->name('admin.faq');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('admin.profile.update');
     Route::get('/doctorTable', [WebController::class, 'doctor_table'])->name('admin.doctor.table');
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix' => '/doctor', 'middleware' => ['auth', 'role:Doctor']], function () {
+    Route::get('/dashboard', [WebController::class, 'dashboard'])->name('doctor.dashboard');
+    Route::get('/profile', [WebController::class, 'profile'])->name('doctor.profile');
+    Route::get('/faq', [WebController::class, 'faq'])->name('doctor.faq');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('doctor.profile.update');
+    Route::get('/doctorTable', [WebController::class, 'doctor_table'])->name('doctor.doctor.table');
+});

@@ -21,7 +21,7 @@ class UsersSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('roottoor'),
                 'about' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                'role' => 'Admin',
+                'role' => 0,
             ],
             [
                 'id' => Uuid::uuid4()->toString(),
@@ -29,7 +29,7 @@ class UsersSeeder extends Seeder
                 'email' => 'doctor@gmail.com',
                 'password' => bcrypt('toorroot'),
                 'about' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                'role' => 'Doctor',
+                'role' => 1,
             ],
         ]);
     }

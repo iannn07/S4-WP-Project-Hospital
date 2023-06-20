@@ -37,7 +37,27 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect('/admin/login');
     }
+    public function login(Request $request)
+    {
+        $input = $request->all();
 
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+            if (auth()->user()->role == 'Admin') {
+                return redirect()->route('admin.dashboard');
+            }
+            else if (auth()->user()->role == 'Doctor') {
+                return redirect()->route('doctor.dashboard');
+            }
+        }
+        else {
+            return redirect()->route('login')->with('error', 'Email-Address And Password Are Wrong.');
+        }
+    }
     public function showLoginForm()
     {
         return redirect('/admin/login');
