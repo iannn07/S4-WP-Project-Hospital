@@ -12,25 +12,36 @@ class WebController extends Controller
     {
         $this->middleware('auth');
     }
-    public function dashboard(Request $request)
+    public function admin_dashboard(Request $request)
     {
         $user = User::find(auth()->user()->id);
-        return view('admin_dashboard', compact('user'));
+        return view('admin.admin_dashboard', compact('user'));
+    }
+    public function doctor_dashboard(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        return view('doctor.doctor_dashboard', compact('user'));
     }
     public function profile(Request $request)
     {
         $user = User::find(auth()->user()->id);
-        return view('admin_profile', compact('user'));
+        return view('other.profile', compact('user'));
     }
     public function faq(Request $request)
     {
         $user = User::find(auth()->user()->id);
-        return view('admin_faq', compact('user'));
+        return view('other.faq', compact('user'));
     }
-    public function doctor_table(Request $request)
+    public function admin_doctor_data(Request $request)
     {
         $user = User::find(auth()->user()->id);
         $doctor = Doctor::all();
-        return view('admin_doctor_data', compact('user', 'doctor'));
+        return view('admin.admin_doctor_data', compact('user', 'doctor'));
+    }
+    public function doctor_table_data(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $doctor = Doctor::all();
+        return view('doctor.doctor_table_data', compact('user', 'doctor'));
     }
 }

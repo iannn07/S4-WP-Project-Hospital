@@ -6,24 +6,45 @@
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-heading">Hospital Account</li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.dashboard') }}">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
-                </a>
+                @if (auth()->user()->role === 'Admin')
+                    <a class="nav-link collapsed" href="{{ route('admin.dashboard') }}">
+                        <i class="bi bi-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
+                @elseif(auth()->user()->role === 'Doctor')
+                    <a class="nav-link collapsed" href="{{ route('doctor.dashboard') }}">
+                        <i class="bi bi-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
+                @endif
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.profile') }}">
-                    <i class="bi bi-person"></i>
-                    <span>Profile</span>
-                </a>
+                @if (auth()->user()->role === 'Admin')
+                    <a class="nav-link collapsed" href="{{ route('admin.profile') }}">
+                        <i class="bi bi-person"></i>
+                        <span>Profile</span>
+                    </a>
+                @elseif(auth()->user()->role === 'Doctor')
+                    <a class="nav-link collapsed" href="{{ route('doctor.profile') }}">
+                        <i class="bi bi-person"></i>
+                        <span>Profile</span>
+                    </a>
+                @endif
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link " href="{{ route('admin.faq') }}">
-                    <i class="bi bi-question-circle"></i>
-                    <span>F.A.Q</span>
-                </a>
+                @if (auth()->user()->role === 'Admin')
+                    <a class="nav-link " href="{{ route('admin.faq') }}">
+                        <i class="bi bi-question-circle"></i>
+                        <span>F.A.Q</span>
+                    </a>
+                @elseif(auth()->user()->role === 'Doctor')
+                    <a class="nav-link " href="{{ route('doctor.faq') }}">
+                        <i class="bi bi-question-circle"></i>
+                        <span>F.A.Q</span>
+                    </a>
+                @endif
             </li><!-- End F.A.Q Page Nav -->
 
             <li class="nav-item">
@@ -34,10 +55,15 @@
             </li><!-- End Contact Page Nav -->
 
             <li class="nav-heading">Hospital Data</li>
-
-            <a class="nav-link collapsed" href="{{ route('admin.doctor.table') }}">
-                <i class="bi bi-table"></i><span>Doctor Data</span>
-            </a>
+            @if (auth()->user()->role === 'Admin')
+                <a class="nav-link collapsed" href="{{ route('admin.doctor.table') }}">
+                    <i class="bi bi-table"></i><span>Doctor Data</span>
+                </a>
+            @elseif(auth()->user()->role === 'Doctor')
+                <a class="nav-link collapsed" href="{{ route('doctor.doctor.table') }}">
+                    <i class="bi bi-table"></i><span>Doctor Data</span>
+                </a>
+            @endif
         </ul>
 
     </aside><!-- End Sidebar-->
@@ -48,7 +74,11 @@
             <h1>Frequently Asked Questions</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                    @if (auth()->user()->role === 'Admin')
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                    @elseif(auth()->user()->role === 'Doctor')
+                        <li class="breadcrumb-item"><a href="{{ route('doctor.dashboard') }}">Home</a></li>
+                    @endif
                     <li class="breadcrumb-item">Pages</li>
                     <li class="breadcrumb-item active">Frequently Asked Questions</li>
                 </ol>
@@ -164,7 +194,8 @@
                                             Natus sunt quo atque mollitia accusamus?
                                         </button>
                                     </h2>
-                                    <div id="faqsOne-5" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                                    <div id="faqsOne-5" class="accordion-collapse collapse"
+                                        data-bs-parent="#faq-group-1">
                                         <div class="accordion-body">
                                             Aut necessitatibus maxime quis dolor et. Nihil laboriosam molestiae qui
                                             molestias placeat corrupti non quo accusamus. Nemo qui quis harum enim sed.
@@ -387,31 +418,8 @@
         </section>
 
     </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-    </footer><!-- End Footer -->
-
-    <!-- Vendor JS Files -->
-    <script src="{{ asset('admin_assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/vendor/chart.js/chart.umd.js') }}"></script>
-    <script src="{{ asset('admin_assets/vendor/echarts/echarts.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/vendor/quill/quill.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
-    <script src="{{ asset('admin_assets/vendor/tinymce/tinymce.min.js') }}"></script>
-    <script src="{{ asset('admin_assets/vendor/php-email-form/validate.js') }}"></script>
-
-    <!-- Template Main JS File -->
-    <script src="{{ asset('admin_assets/js/main.js') }}"></script>
+@section('footer')
+@endsection
+@section('script')
+@endsection
 @endsection
