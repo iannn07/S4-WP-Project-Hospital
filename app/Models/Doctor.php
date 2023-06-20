@@ -9,6 +9,9 @@ class Doctor extends Model
 {
     use HasFactory;
 
+    protected $table = 'doctors';
+    protected $guarded = [];
+
     protected $fillable = [
         'name',
         'email',
