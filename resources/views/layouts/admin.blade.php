@@ -37,10 +37,19 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="{{ route('admin.dashboard') }}" class="logo d-flex align-items-center" style="width:fit-content">
-                <img src="{{ asset('admin_assets/img/HMS ICON.png') }}" alt="">
-                <span class="d-none d-lg-block">Hospital Management System</span>
-            </a>
+            @if (auth()->user()->role === 'Admin')
+                <a href="{{ route('admin.dashboard') }}" class="logo d-flex align-items-center"
+                    style="width:fit-content">
+                    <img src="{{ asset('admin_assets/img/HMS ICON.png') }}" alt="">
+                    <span class="d-none d-lg-block">Hospital Management System</span>
+                </a>
+            @elseif(auth()->user()->role === 'Doctor')
+                <a href="{{ route('doctor.dashboard') }}" class="logo d-flex align-items-center"
+                    style="width:fit-content">
+                    <img src="{{ asset('admin_assets/img/HMS ICON.png') }}" alt="">
+                    <span class="d-none d-lg-block">Hospital Management System</span>
+                </a>
+            @endif
         </div>
         <!-- End Logo -->
 

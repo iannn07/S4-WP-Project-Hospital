@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataCounter;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -53,4 +54,5 @@ Route::group(['prefix' => '/doctor', 'middleware' => ['auth', 'role:Doctor']], f
     Route::get('/faq', [WebController::class, 'faq'])->name('doctor.faq');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('doctor.profile.update');
     Route::get('/doctorTable', [WebController::class, 'doctor_table_data'])->name('doctor.doctor.table');
+    Route::get('echarts', [DataCounter::class, 'echart'])->name('data-chart');
 });
