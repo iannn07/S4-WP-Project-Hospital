@@ -2,11 +2,9 @@
 
 use App\Http\Controllers\DataCounter;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
-use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +29,8 @@ use Illuminate\Support\Facades\DB;
 
 Auth::routes(['register' => false]);
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::redirect('/', '/admin/login');
+Route::group(['prefix' => 'employee'], function () {
+    Route::redirect('/', '/employee/login');
     Route::group(['middleware' => 'guest'], function () {
         Route::get('/login', function () {
             return view('auth.login');
@@ -46,6 +44,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:Admin']], fun
     Route::get('/faq', [WebController::class, 'faq'])->name('admin.faq');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('admin.profile.update');
     Route::get('/doctorTable', [WebController::class, 'admin_doctor_data'])->name('admin.doctor.table');
+    Route::get('/echarts', [DataCounter::class, 'echart']);
 });
 
 Route::group(['prefix' => '/doctor', 'middleware' => ['auth', 'role:Doctor']], function () {
@@ -54,5 +53,5 @@ Route::group(['prefix' => '/doctor', 'middleware' => ['auth', 'role:Doctor']], f
     Route::get('/faq', [WebController::class, 'faq'])->name('doctor.faq');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('doctor.profile.update');
     Route::get('/doctorTable', [WebController::class, 'doctor_table_data'])->name('doctor.doctor.table');
-    Route::get('echarts', [DataCounter::class, 'echart'])->name('data-chart');
+    Route::get('/echarts', [DataCounter::class, 'echart']);
 });

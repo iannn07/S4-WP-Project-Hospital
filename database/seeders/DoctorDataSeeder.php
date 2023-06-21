@@ -21,7 +21,7 @@ class DoctorDataSeeder extends Seeder
                 'id' => $faker->unique()->numberBetween(100,999),
                 'name' => $faker->name,
                 'email' => $faker->unique()->email,
-                'license' => $faker->bothify('??#??#??#'),
+                'license' => $faker->bothify('25########'),
                 'created_at' => Carbon::now()->timezone('Asia/Jakarta'),
                 'updated_at' => Carbon::now()->timezone('Asia/Jakarta'),
             ]);

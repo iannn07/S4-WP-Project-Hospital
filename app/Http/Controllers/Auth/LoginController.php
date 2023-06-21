@@ -35,7 +35,7 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/admin/login');
+        return redirect('/employee/login');
     }
     public function login(Request $request)
     {
@@ -60,7 +60,7 @@ class LoginController extends Controller
     }
     public function showLoginForm()
     {
-        return redirect('/admin/login');
+        return redirect('/employee/login');
     }
 
     /**
