@@ -44,6 +44,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:Admin']], fun
     Route::get('/faq', [WebController::class, 'faq'])->name('admin.faq');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('admin.profile.update');
     Route::get('/doctorTable', [WebController::class, 'admin_doctor_data'])->name('admin.doctor.table');
+    Route::get('/patientData', [WebController::class, 'admin_patient_crud'])->name('admin.patient.crud');
     Route::get('/echarts', [DataCounter::class, 'echart']);
 });
 
