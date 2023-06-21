@@ -108,7 +108,7 @@
 
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                 <div class="align-items-center d-flex flex-column">
-                                    <img src="{{ asset('admin_assets/img/profile-img.png') }}" alt="Profile"
+                                    <img src="{{ asset('/storage/' . $user->avatar) }}" alt="Profile"
                                         class="rounded-circle" style="width: 120px; height: 120px">
                                     <h2>{{ $user->name }}</h2>
                                     <h3>{{ $user->role }}</h3>
@@ -137,50 +137,111 @@
 
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
-                                <!-- Profile Edit Form -->
-                                <form action="{{ route('admin.profile.update') }}" method="POST">
-                                    @csrf
-                                    @method('put')
-                                    <div class="row mb-3">
-                                        <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile
-                                            Image</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <img src="{{ asset('admin_assets/img/profile-img.png') }}" alt="Profile">
-                                            <div class="pt-2">
-                                                <a href="#" class="btn btn-primary btn-sm"
-                                                    title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                                                <a href="#" class="btn btn-danger btn-sm"
-                                                    title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                                @if (auth()->user()->role === 'Admin')
+                                    <!-- Profile Edit Form -->
+                                    <form action="{{ route('admin.profile.update') }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('put')
+                                        <div class="row mb-3">
+                                            <label for="avatar" class="col-md-4 col-lg-3 col-form-label">Profile
+                                                Image</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <img src="{{ asset('storage/' . $user->avatar) }}" alt="Profile">
+                                                <div class="pt-2">
+                                                    <div class="input-group">
+                                                        <input type="file" id="avatar" class="form-control"
+                                                            accept="image/*" style="display: none" name="avatar">
+                                                        <div class="input-group-append">
+                                                            <label for="avatar" class="btn btn-primary btn-sm"
+                                                                title="Upload new profile image">
+                                                                <i class="bi bi-upload upload-icon"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Name</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="name" type="text" class="form-control" id="name"
-                                                value="{{ $user->name }}">
+                                        <div class="row mb-3">
+                                            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Name</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="name" type="text" class="form-control" id="name"
+                                                    value="{{ $user->name }}">
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="row mb-3">
-                                        <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <textarea name="about" class="form-control" id="about" style="height: 100px">{{ $user->about }}</textarea>
+                                        <div class="row mb-3">
+                                            <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <textarea name="about" class="form-control" id="about" style="height: 100px">{{ $user->about }}</textarea>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="row mb-3">
-                                        <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="email" type="email" class="form-control" id="Email"
-                                                value="{{ $user->email }}">
+                                        <div class="row mb-3">
+                                            <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="email" type="email" class="form-control" id="Email"
+                                                    value="{{ $user->email }}">
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                                    </div>
-                                </form><!-- End Profile Edit Form -->
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        </div>
+                                    </form><!-- End Profile Edit Form -->
+                                @elseif(auth()->user()->role === 'Doctor')
+                                    <!-- Profile Edit Form -->
+                                    <form action="{{ route('doctor.profile.update') }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('put')
+                                        <div class="row mb-3">
+                                            <label for="avatar" class="col-md-4 col-lg-3 col-form-label">Profile
+                                                Image</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <img src="{{ asset('storage/' . $user->avatar) }}" alt="Profile">
+                                                <div class="pt-2">
+                                                    <div class="input-group">
+                                                        <input type="file" id="avatar" class="form-control"
+                                                            accept="image/*" style="display: none" name="avatar">
+                                                        <div class="input-group-append">
+                                                            <label for="avatar" class="btn btn-primary btn-sm"
+                                                                title="Upload new profile image">
+                                                                <i class="bi bi-upload upload-icon"></i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Name</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="name" type="text" class="form-control" id="name"
+                                                    value="{{ $user->name }}">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <textarea name="about" class="form-control" id="about" style="height: 100px">{{ $user->about }}</textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                            <div class="col-md-8 col-lg-9">
+                                                <input name="email" type="email" class="form-control" id="Email"
+                                                    value="{{ $user->email }}">
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        </div>
+                                    </form><!-- End Profile Edit Form -->
+                                @endif
                             </div>
                         </div><!-- End Bordered Tabs -->
                     </div>

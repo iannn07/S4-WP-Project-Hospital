@@ -215,7 +215,7 @@
                     <!-- Website Traffic -->
                     <div class="card">
                         <div class="card-body pb-0">
-                            <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+                            <h5 class="card-title">Hospital Data</h5>
 
                             <div id="pieChart" style="min-height: 400px;" class="echart"></div>
 

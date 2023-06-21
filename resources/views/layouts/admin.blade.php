@@ -134,15 +134,20 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
-                        <img src="{{ asset('admin_assets/img/profile-img.png') }}" alt="Profile"
-                            class="rounded-circle">
+                        <img src="{{ asset('storage/' . $user->avatar) }}" alt="Profile" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{ $user->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>{{ $user->name }}</h6>
-                            <span>{{ $user->role }}</span>
+                            <div class="user-info">
+                                <img src="{{ asset('storage/' . $user->avatar) }}" alt="Profile"
+                                    class="rounded-circle">
+                                <div class="user-details">
+                                    <h6>{{ $user->name }}</h6>
+                                    <span>{{ $user->role }}</span>
+                                </div>
+                            </div>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
