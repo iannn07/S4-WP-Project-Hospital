@@ -58,8 +58,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-hospital"></i><span>Patient</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-hospital"></i><span>Patient</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                     <li>
@@ -94,45 +93,94 @@
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
-
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Patient Data Organizer</h5>
+
+                            <p>Click This Button below to add <b>New Patient</b></p>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-start">
+                                        <label class="btn btn-primary btn-md" title="Add New Data"
+                                            style="margin-bottom: 16px">
+                                            <a href="{{ route('patientController.create') }}">
+                                                <i class="bi bi-plus-square upload-icon" style="margin-right: 8px"></i>
+                                                <span style="color: white">Add Patient</span>
+                                            </a>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-end">
+                                        <form action="{{ route('admin.patient.truncate') }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-danger btn-md" title="DELETE ALL RECORDS"
+                                                style="margin-bottom: 16px"
+                                                onclick="return confirm('Are you sure you want to delete all data?')">
+                                                <i class="bi bi-trash-fill upload-icon" style="margin-right: 8px"></i>
+                                                <span style="color: white">DELETE ALL RECORDS</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th class="col-1">Patient ID</th>
+                                        <th class="col-1">ID</th>
                                         <th class="col-2">Name</th>
                                         <th class="col-2">PIC</th>
                                         <th class="col-2">Phone</th>
                                         <th class="col-2">Address</th>
+                                        <th class="col-2">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody style="font-size: 10px;">
-                                    @foreach ($patient as $patient_index)
+                                    @forelse ($patient as $patient_index)
                                         <tr>
                                             <td>{{ $patient_index->id }}</td>
                                             <td>{{ $patient_index->name }}</td>
                                             <td>{{ $patient_index->doctor->name }}</td>
                                             <td>{{ $patient_index->phone }}</td>
                                             <td>{{ $patient_index->address }}</td>
+                                            <td>
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{ route('patientController.edit', $patient_index->id) }}"
+                                                        class="mx-2 btn btn-warning btn-sm" style="color: black"><i
+                                                            class="bi bi-pencil"></i></a>
+                                                    <form id="delete-journey-{{ $patient_index->id }}"
+                                                        action="{{ route('patientController.destroy', $patient_index->id) }}"
+                                                        method="POST" style="display: inline-block;">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="mx-2 btn btn-danger btn-sm"
+                                                            onclick="return confirm('Are you sure you want to delete this patient?')">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                            <td colspan="100%" align="center" style="font-size: 16px">No Data</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
     </main>
-@section('footer')
-@endsection
-@section('script')
-@endsection
+    @section('footer')
+    @endsection
+    @section('script')
+    @endsection
 @endsection

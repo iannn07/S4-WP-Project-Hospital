@@ -52,6 +52,11 @@ h6 {
         padding: 20px;
     }
 }
+#main-add-patient {
+    margin-top: 60px;
+    padding: 20px 30px;
+    transition: all 0.3s;
+}
 
 /*--------------------------------------------------------------
 # Page Title
@@ -1234,7 +1239,6 @@ h6 {
 
 .upload-icon {
     color: #fff;
-    /* Set the desired color for the icon */
 }
 
 .user-info {
