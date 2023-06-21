@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('patients', function (Blueprint $table) {
             $table->id()->unique();
             $table->string('name');
+            $table->unsignedBigInteger('doctor_id');
             $table->foreign('doctor_id')
                 ->references('id')
                 ->on('doctors')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->BigInteger('phone');
+            $table->string('address');
             $table->date('dob');
             $table->string('gender', 2);
             $table->timestamps();

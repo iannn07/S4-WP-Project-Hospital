@@ -17,7 +17,7 @@ class UsersSeeder extends Seeder
         User::insert([
             [
                 'id' => Uuid::uuid4()->toString(),
-                'name' => 'Admin',
+                'name' => 'Admin HMS',
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('roottoor'),
                 'about' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -25,7 +25,7 @@ class UsersSeeder extends Seeder
             ],
             [
                 'id' => Uuid::uuid4()->toString(),
-                'name' => 'Doctor',
+                'name' => 'Doctor HMS',
                 'email' => 'doctor@gmail.com',
                 'password' => bcrypt('toorroot'),
                 'about' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',

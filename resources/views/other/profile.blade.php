@@ -57,17 +57,33 @@
             <li class="nav-heading">Hospital Data</li>
 
             @if (auth()->user()->role === 'Admin')
-                <a class="nav-link collapsed" href="{{ route('admin.doctor.table') }}">
-                    <i class="bi bi-table"></i><span>Doctor Data</span>
-                </a>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="{{ route('admin.doctor.table') }}">
+                        <i class="bi bi-table"></i><span>Doctor Data</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-hospital"></i><span>Patient</span><i
+                            class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="tables-nav" class="nav-content collapse collapse" data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="{{ route('admin.patient.view') }}">
+                                <i class="bi bi-circle"></i><span>View Patients</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.patient.crud') }}">
+                                <i class="bi bi-circle"></i><span>Organize Patient</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             @elseif(auth()->user()->role === 'Doctor')
                 <a class="nav-link collapsed" href="{{ route('doctor.doctor.table') }}">
                     <i class="bi bi-table"></i><span>Doctor Data</span>
-                </a>
-            @endif
-            @if (auth()->user()->role === 'Admin')
-                <a class="nav-link collapsed" href="{{ route('admin.patient.crud') }}">
-                    <i class="bi bi-hospital"></i><span>Organize Patient</span>
                 </a>
             @endif
         </ul>

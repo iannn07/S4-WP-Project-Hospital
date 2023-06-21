@@ -34,11 +34,17 @@ class WebController extends Controller
         $doctor = Doctor::all();
         return view('admin.admin_doctor_data', compact('user', 'doctor'));
     }
+    public function admin_patient_view(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $patient = Patient::all();
+        return view('admin.admin_patient_view', compact('user', 'patient'));
+    }
     public function admin_patient_crud(Request $request)
     {
         $user = User::find(auth()->user()->id);
-        // $patient = Patient::all();
-        return view('admin.admin_patient_crud', compact('user'));
+        $patient = Patient::all();
+        return view('admin.admin_patient_crud', compact('user', 'patient'));
     }
     public function doctor_dashboard(Request $request)
     {

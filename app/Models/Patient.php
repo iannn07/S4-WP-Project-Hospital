@@ -12,11 +12,13 @@ class Patient extends Model
 
     protected $fillable = [
         'name',
+        'phone',
+        'address',
         'dob',
         'gender',
     ];
 
-    public function category(): BelongsTo
+    public function doctor(): BelongsTo
     {
         return $this->belongsTo(Doctor::class);
     }

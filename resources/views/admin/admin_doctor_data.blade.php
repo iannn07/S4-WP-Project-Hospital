@@ -50,13 +50,31 @@
             </li><!-- End Contact Page Nav -->
 
             <li class="nav-heading">Hospital Data</li>
-            <a class="nav-link " href="{{ route('admin.doctor.table') }}">
-                <i class="bi bi-table"></i><span>Doctor Data</span>
-            </a>
 
-            <a class="nav-link collapsed" href="{{ route('admin.patient.crud') }}">
-                <i class="bi bi-hospital"></i><span>Organize Patient</span>
-            </a>
+            <li class="nav-item">
+                <a class="nav-link " href="{{ route('admin.doctor.table') }}">
+                    <i class="bi bi-table"></i><span>Doctor Data</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-hospital"></i><span>Patient</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="tables-nav" class="nav-content collapse collapse" data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('admin.patient.view') }}">
+                            <i class="bi bi-circle"></i><span>View Patients</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.patient.crud') }}">
+                            <i class="bi bi-circle"></i><span>Organize Patient</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
 
     </aside><!-- End Sidebar-->

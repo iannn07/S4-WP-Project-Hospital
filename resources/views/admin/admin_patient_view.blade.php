@@ -58,17 +58,16 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-hospital"></i><span>Patient</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-hospital"></i><span>Patient</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="{{ route('admin.patient.view') }}">
+                        <a href="{{ route('admin.patient.view') }}" class="active">
                             <i class="bi bi-circle"></i><span>View Patients</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.patient.crud') }}" class="active">
+                        <a href="{{ route('admin.patient.crud') }}">
                             <i class="bi bi-circle"></i><span>Organize Patient</span>
                         </a>
                     </li>
@@ -81,12 +80,12 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Patient Data Organizer</h1>
+            <h1>Patient Data</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
                     <li class="breadcrumb-item">Tables</li>
-                    <li class="breadcrumb-item active">Patient Data Organizer</li>
+                    <li class="breadcrumb-item active">Patient Data</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -97,17 +96,17 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Patient Data Organizer</h5>
+                            <h5 class="card-title">Patient Data</h5>
 
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th class="col-1">Patient ID</th>
-                                        <th class="col-2">Name</th>
-                                        <th class="col-2">PIC</th>
-                                        <th class="col-2">Phone</th>
-                                        <th class="col-2">Address</th>
+                                        <th class="col-1">ID</th>
+                                        <th class="col-3">Name</th>
+                                        <th class="col-3">PIC</th>
+                                        <th class="col-4">Phone</th>
+                                        <th class="col-1">Address</th>
                                     </tr>
                                 </thead>
                                 <tbody style="font-size: 10px;">
