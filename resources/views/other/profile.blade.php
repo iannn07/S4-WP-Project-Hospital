@@ -65,6 +65,11 @@
                     <i class="bi bi-table"></i><span>Doctor Data</span>
                 </a>
             @endif
+            @if (auth()->user()->role === 'Admin')
+                <a class="nav-link collapsed" href="{{ route('admin.patient.crud') }}">
+                    <i class="bi bi-hospital"></i><span>Organize Patient</span>
+                </a>
+            @endif
         </ul>
 
     </aside><!-- End Sidebar-->

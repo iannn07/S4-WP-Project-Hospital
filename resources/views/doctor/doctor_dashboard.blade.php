@@ -6,17 +6,12 @@
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-heading">Hospital Account</li>
             <li class="nav-item">
-                @if (auth()->user()->role === 'Admin')
-                    <a class="nav-link " href="{{ route('admin.dashboard') }}">
-                        <i class="bi bi-grid"></i>
-                        <span>Dashboard</span>
-                    </a>
-                @elseif(auth()->user()->role === 'Doctor')
-                    <a class="nav-link " href="{{ route('doctor.dashboard') }}">
-                        <i class="bi bi-grid"></i>
-                        <span>Dashboard</span>
-                    </a>
-                @endif
+
+                <a class="nav-link " href="{{ route('doctor.dashboard') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
@@ -55,16 +50,9 @@
             </li><!-- End Contact Page Nav -->
 
             <li class="nav-heading">Hospital Data</li>
-
-            @if (auth()->user()->role === 'Admin')
-                <a class="nav-link collapsed" href="{{ route('admin.doctor.table') }}">
-                    <i class="bi bi-table"></i><span>Doctor Data</span>
-                </a>
-            @elseif(auth()->user()->role === 'Doctor')
-                <a class="nav-link collapsed" href="{{ route('doctor.doctor.table') }}">
-                    <i class="bi bi-table"></i><span>Doctor Data</span>
-                </a>
-            @endif
+            <a class="nav-link collapsed" href="{{ route('doctor.doctor.table') }}">
+                <i class="bi bi-table"></i><span>Doctor Data</span>
+            </a>
         </ul>
 
     </aside><!-- End Sidebar-->

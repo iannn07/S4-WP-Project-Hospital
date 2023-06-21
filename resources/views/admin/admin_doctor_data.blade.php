@@ -6,17 +6,12 @@
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-heading">Hospital Account</li>
             <li class="nav-item">
-                @if (auth()->user()->role === 'Admin')
-                    <a class="nav-link collapsed" href="{{ route('admin.dashboard') }}">
-                        <i class="bi bi-grid"></i>
-                        <span>Dashboard</span>
-                    </a>
-                @elseif(auth()->user()->role === 'Doctor')
-                    <a class="nav-link collapsed" href="{{ route('doctor.dashboard') }}">
-                        <i class="bi bi-grid"></i>
-                        <span>Dashboard</span>
-                    </a>
-                @endif
+
+                <a class="nav-link collapsed" href="{{ route('admin.dashboard') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
@@ -55,17 +50,15 @@
             </li><!-- End Contact Page Nav -->
 
             <li class="nav-heading">Hospital Data</li>
+            <a class="nav-link " href="{{ route('admin.doctor.table') }}">
+                <i class="bi bi-table"></i><span>Doctor Data</span>
+            </a>
 
-            @if (auth()->user()->role === 'Admin')
-                <a class="nav-link " href="{{ route('admin.doctor.table') }}">
-                    <i class="bi bi-table"></i><span>Doctor Data</span>
-                </a>
-            @elseif(auth()->user()->role === 'Doctor')
-                <a class="nav-link " href="{{ route('doctor.doctor.table') }}">
-                    <i class="bi bi-table"></i><span>Doctor Data</span>
-                </a>
-            @endif
+            <a class="nav-link collapsed" href="{{ route('admin.patient.crud') }}">
+                <i class="bi bi-hospital"></i><span>Organize Patient</span>
+            </a>
         </ul>
+
     </aside><!-- End Sidebar-->
 
     <main id="main" class="main">
@@ -74,11 +67,7 @@
             <h1>Doctor Data for Admin</h1>
             <nav>
                 <ol class="breadcrumb">
-                    @if (auth()->user()->role === 'Admin')
-                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                    @elseif(auth()->user()->role === 'Doctor')
-                        <li class="breadcrumb-item"><a href="{{ route('doctor.dashboard') }}">Home</a></li>
-                    @endif
+                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
                     <li class="breadcrumb-item">Tables</li>
                     <li class="breadcrumb-item active">Doctor Data for Admin</li>
                 </ol>
@@ -123,8 +112,8 @@
             </div>
         </section>
     </main>
-    @section('footer')
-    @endsection
-    @section('script')
-    @endsection
+@section('footer')
+@endsection
+@section('script')
+@endsection
 @endsection
