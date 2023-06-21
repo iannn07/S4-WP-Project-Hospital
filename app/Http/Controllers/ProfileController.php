@@ -25,6 +25,9 @@ class ProfileController extends Controller
                 Storage::delete('uploads/' . $user->avatar);
                 $user->avatar = $imagePath;
             }
+        } else if ($request->hasFile('avatar')) {
+            $imagePath = $request->file('avatar')->store('uploads', 'public');
+            $user->avatar = $imagePath;
         } else if (is_null($user->avatar)) {
             // Handle case when there is no profile picture in the database
             $defaultImagePath = 'admin_assets/img/profile-img.png';
