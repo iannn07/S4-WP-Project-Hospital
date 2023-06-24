@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Uuid;
 
 class PatientController extends Controller
 {
@@ -39,6 +41,7 @@ class PatientController extends Controller
             'date' => 'required',
             'gender' => 'required',
             'doctor' => 'required',
+            'payment' => 'required',
         ]);
 
         $newPatient = new Patient();
@@ -49,6 +52,12 @@ class PatientController extends Controller
         $newPatient->gender = $validatedData['gender'];
         $newPatient->doctor_id = $validatedData['doctor'];
         $newPatient->save();
+
+        $newPayment = new Payment();
+        $newPayment->id = Uuid::uuid4()->toString();
+        $newPayment->patient_id = $newPatient->id;
+        $newPayment->full_amount = $validatedData['payment'];
+        $newPayment->save();
 
         return redirect()->route('admin.patient.crud');
     }
@@ -88,6 +97,11 @@ class PatientController extends Controller
         $updatePatient->gender = $request->gender;
         $updatePatient->doctor_id = $request->doctor;
         $updatePatient->save();
+
+        $updatePayment = Payment::where('patient_id', $id)->firstOrFail();
+        $updatePayment->patient_id = $updatePatient->id;
+        $updatePayment->full_amount = $request->payment;
+        $updatePayment->save();
 
         return redirect()->route('admin.patient.crud');
     }

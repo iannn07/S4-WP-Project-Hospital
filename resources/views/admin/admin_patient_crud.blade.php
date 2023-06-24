@@ -150,8 +150,9 @@
                                             <td>
                                                 <div class="d-flex">
                                                     <span>Rp.</span>
-                                                    <span class="d-flex justify-content-end" style="width: 50px;">{{ number_format($patient_index->payment->full_amount, 0, ',', '.') }}</span>
-                                                  </div>
+                                                    <span class="d-flex justify-content-end"
+                                                        style="width: 50px;">{{ number_format($patient_index->payment->full_amount, 0, ',', '.') }}</span>
+                                                </div>
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
@@ -164,7 +165,7 @@
                                                         @csrf
                                                         @method('delete')
                                                         <button type="submit" class="mx-2 btn btn-danger btn-sm"
-                                                            onclick="return confirm('Are you sure you want to delete this patient?')">
+                                                            onclick="return confirm('Are you sure you want to delete this patient?\n\nTHIS ACTION CANNOT BE UNDONE\n\nYou will delete {{ $patient_index->name }} with the ID {{ $patient_index->id }}')">
                                                             <i class="bi bi-trash"></i>
                                                         </button>
                                                     </form>

@@ -19,7 +19,6 @@ return new class extends Migration
                 ->on('patients')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->BigInteger('tax');
             $table->BigInteger('full_amount');
             $table->timestamps();
         });
