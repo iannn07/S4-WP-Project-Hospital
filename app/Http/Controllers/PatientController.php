@@ -14,7 +14,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -58,7 +58,10 @@ class PatientController extends Controller
      */
     public function show(string $id)
     {
-        abort(404);
+        $user = User::find(auth()->user()->id);
+        $doctor = Doctor::all();
+        $patient = Patient::findOrFail($id);
+        return view('admin.patient_data.pd_details', compact('user', 'doctor', 'patient'));
     }
 
     /**

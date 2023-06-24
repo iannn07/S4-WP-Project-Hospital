@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.pd_admin')
 @section('header')
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
@@ -76,69 +76,6 @@
         </ul>
 
     </aside><!-- End Sidebar-->
-
-    <main id="main" class="main">
-
-        <div class="pagetitle">
-            <h1>Patient Data</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item">Tables</li>
-                    <li class="breadcrumb-item active">Patient Data</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
-
-        <section class="section">
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Patient Data</h5>
-
-                            <table class="table datatable">
-                                <thead>
-                                    <tr>
-                                        <th class="col-1">ID</th>
-                                        <th class="col-3">Name</th>
-                                        <th class="col-3">PIC</th>
-                                        <th class="col-4">Phone</th>
-                                        <th class="col-4">Address</th>
-                                        <th class="col-1">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody style="font-size: 10px;">
-                                    @forelse ($patient as $patient_index)
-                                        <tr>
-                                            <td>{{ $patient_index->id }}</td>
-                                            <td>{{ $patient_index->name }}</td>
-                                            <td>{{ $patient_index->doctor->name }}</td>
-                                            <td>{{ $patient_index->phone }}</td>
-                                            <td>{{ $patient_index->address }}</td>
-                                            <td>
-                                                <a href="{{ route('patientController.show', $patient_index->id) }}"
-                                                    class="mx-2 btn btn-info" style="color: black"><i
-                                                        class="bi bi-eye"></i></a>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="100%" align="center" style="font-size: 16px">No Data</td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    @section('footer')
-    @endsection
-    @section('script')
-    @endsection
+@section('script')
+@endsection
 @endsection

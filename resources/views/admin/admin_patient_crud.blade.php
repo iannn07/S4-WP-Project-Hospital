@@ -58,7 +58,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-hospital"></i><span>Patient</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-hospital"></i><span>Patient Data</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                     <li>
@@ -68,7 +68,7 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.patient.crud') }}" class="active">
-                            <i class="bi bi-circle"></i><span>Organize Patient</span>
+                            <i class="bi bi-circle"></i><span>Organize Patients</span>
                         </a>
                     </li>
                 </ul>
@@ -133,26 +133,32 @@
                                     <tr>
                                         <th class="col-1">ID</th>
                                         <th class="col-2">Name</th>
-                                        <th class="col-2">PIC</th>
                                         <th class="col-2">Phone</th>
                                         <th class="col-2">Address</th>
+                                        <th class="col-2">Total</th>
                                         <th class="col-2">Action</th>
+
                                     </tr>
                                 </thead>
-                                <tbody style="font-size: 10px;">
+                                <tbody>
                                     @forelse ($patient as $patient_index)
                                         <tr>
                                             <td>{{ $patient_index->id }}</td>
                                             <td>{{ $patient_index->name }}</td>
-                                            <td>{{ $patient_index->doctor->name }}</td>
                                             <td>{{ $patient_index->phone }}</td>
                                             <td>{{ $patient_index->address }}</td>
+                                            <td>
+                                                <div class="d-flex">
+                                                    <span>Rp.</span>
+                                                    <span class="d-flex justify-content-end" style="width: 150px;">{{ number_format($patient_index->payment->full_amount, 0, ',', '.') }}</span>
+                                                  </div>
+                                            </td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
                                                     <a href="{{ route('patientController.edit', $patient_index->id) }}"
                                                         class="mx-2 btn btn-warning btn-sm" style="color: black"><i
                                                             class="bi bi-pencil"></i></a>
-                                                    <form id="delete-journey-{{ $patient_index->id }}"
+                                                    <form id="delete-journey"
                                                         action="{{ route('patientController.destroy', $patient_index->id) }}"
                                                         method="POST" style="display: inline-block;">
                                                         @csrf

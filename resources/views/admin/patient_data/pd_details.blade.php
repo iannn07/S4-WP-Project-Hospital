@@ -78,67 +78,60 @@
     </aside><!-- End Sidebar-->
 
     <main id="main" class="main">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 align-self-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Patient Details</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Patient Name</label>
+                                <p class="form-control" style="text-align: center">{{ $patient->name }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="doctor" class="form-label">Doctor</label>
+                                <p class="form-control" style="text-align: center">{{ $patient->doctor->name }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="gender" class="form-label">Gender</label>
+                                <p class="form-control" style="text-align: center">{{ $patient->gender }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="date" class="form-label">Date of Birth</label>
+                                <p class="form-control" style="text-align: center">{{ $patient->dob }}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="phone" class="form-label">Phone</label>
+                                <p class="form-control">{{ $patient->phone }}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="address" class="form-label">Address</label>
+                                <p class="form-control">{{ $patient->address }}</p>
+                            </div>
+                            <div class="col-md-6 text-center" style="margin: 0 auto;">
+                                <label for="payment" class="form-label">Total Payment</label>
+                                <p class="form-control">
+                                    <span>Rp. </span>
+                                    <span>{{ number_format($patient->payment->full_amount, 0, ',', '.') }}</span>
+                                </p>
+                            </div>
+                            <br>
+                            <div class="text-center">
+                                <button type="reset" class="btn btn-secondary"><a
+                                        href="{{ route('admin.patient.view') }}" style="color: white">Back</a></button>
+                                <button type="submit" class="btn btn-danger"><a
+                                        href="{{ route('admin.payment', $patient->id) }}"
+                                        style="color: white">Payment</a></button>
+                            </div>
 
-        <div class="pagetitle">
-            <h1>Patient Data</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item">Tables</li>
-                    <li class="breadcrumb-item active">Patient Data</li>
-                </ol>
-            </nav>
-        </div><!-- End Page Title -->
-
-        <section class="section">
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Patient Data</h5>
-
-                            <table class="table datatable">
-                                <thead>
-                                    <tr>
-                                        <th class="col-1">ID</th>
-                                        <th class="col-3">Name</th>
-                                        <th class="col-3">PIC</th>
-                                        <th class="col-4">Phone</th>
-                                        <th class="col-4">Address</th>
-                                        <th class="col-1">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody style="font-size: 10px;">
-                                    @forelse ($patient as $patient_index)
-                                        <tr>
-                                            <td>{{ $patient_index->id }}</td>
-                                            <td>{{ $patient_index->name }}</td>
-                                            <td>{{ $patient_index->doctor->name }}</td>
-                                            <td>{{ $patient_index->phone }}</td>
-                                            <td>{{ $patient_index->address }}</td>
-                                            <td>
-                                                <a href="{{ route('patientController.show', $patient_index->id) }}"
-                                                    class="mx-2 btn btn-info" style="color: black"><i
-                                                        class="bi bi-eye"></i></a>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="100%" align="center" style="font-size: 16px">No Data</td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
-
-    @section('footer')
-    @endsection
-    @section('script')
-    @endsection
+@section('footer')
+@endsection
+@section('script')
+@endsection
 @endsection

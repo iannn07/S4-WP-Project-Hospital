@@ -48,7 +48,7 @@ class DoctorController extends Controller
      */
     public function show(string $id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -56,7 +56,7 @@ class DoctorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -64,7 +64,7 @@ class DoctorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -72,6 +72,6 @@ class DoctorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        abort(404);
     }
 }

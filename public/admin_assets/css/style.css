@@ -52,6 +52,7 @@ h6 {
         padding: 20px;
     }
 }
+
 #main-add-patient {
     margin-top: 60px;
     padding: 20px 30px;
@@ -1266,4 +1267,19 @@ h6 {
 .user-info .user-details {
     flex: 1;
     text-align: center;
+}
+
+.form-label-modal {
+    display: inline-block;
+    width: 100px;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.d-flex span.d-flex {
+    width: 150px;
+    text-align: right;
 }

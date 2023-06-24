@@ -222,6 +222,11 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('admin_assets/js/main.js') }}"></script>
+
+    <!-- Additional Scripts For Modal -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
     @yield('script')
 </body>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -45,6 +46,13 @@ class WebController extends Controller
         $user = User::find(auth()->user()->id);
         $patient = Patient::all();
         return view('admin.admin_patient_crud', compact('user', 'patient'));
+    }
+    public function admin_payment(Request $request, string $id)
+    {
+        $user = User::find(auth()->user()->id);
+        $patient = Patient::findOrFail($id);
+        $doctor = Doctor::all();
+        return view('admin.payment_data.pay_summary', compact('user', 'patient', 'doctor'));
     }
     public function doctor_dashboard(Request $request)
     {
