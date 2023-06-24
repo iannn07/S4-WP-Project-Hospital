@@ -6,29 +6,54 @@
                 <h5 class="card-title">Add Patient Form</h5>
 
                 <!-- Multi Columns Form -->
-                <form action="{{ route('patientController.update', $patient->id) }}" method="POST" class="row g-3">
+                <form action="{{ route('patientController.update', $patient->id) }}" method="POST"
+                    class="row g-3 needs-validation" novalidate>
                     @csrf
                     @method('put')
                     <div class="col-md-12">
                         <label for="name" class="form-label">Patient Name</label>
                         <input type="text" class="form-control" id="name" name="name"
-                            value="{{ $patient->name }}">
+                            value="{{ $patient->name }}" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide patient's name.
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <label for="phone" class="form-label">Phone</label>
                         <input type="text" class="form-control" id="phone" name="phone"
-                            value="{{ $patient->phone }}"
+                            value="{{ $patient->phone }}" required
                             onkeypress="return (event.charCode >= 48 && event.charCode <= 57) ? true : false">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide patient's phone number or any relatives.
+                        </div>
                     </div>
                     <div class="col-12">
                         <label for="address" class="form-label">Address</label>
                         <input type="text" class="form-control" id="address" name="address"
-                            value="{{ $patient->address }}">
+                            value="{{ $patient->address }}" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide patient's address.
+                        </div>
                     </div>
                     <div class="col-md-4">
                         <label for="date" class="form-label">Date of Birth</label>
                         <input type="date" class="form-control" id="date" name="date"
-                            value="{{ $patient->dob }}">
+                            value="{{ $patient->dob }}" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please input the date.
+                        </div>
                     </div>
                     <div class="col-md-2">
                         <label for="gender" class="form-label">Gender</label>
@@ -51,8 +76,14 @@
                     <div class="col-md-6 text-center" style="margin: 0 auto; margin-top: 16px">
                         <label for="payment" class="form-label">Total Payment</label>
                         <input type="type" for="payment" id="payment" name="payment" class="form-control"
-                            value="{{ $patient->payment->full_amount }}"
+                            value="{{ $patient->payment->full_amount }}" required
                             onkeypress="return (event.charCode >= 48 && event.charCode <= 57) ? true : false">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please input the total amount.
+                        </div>
                     </div>
                     <br>
                     <div class="text-center">

@@ -48,7 +48,6 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:Admin']], fun
     Route::resource('/patientController', PatientController::class);
     Route::delete('/patientData/truncate', [DataCounter::class, 'truncate'])->name('admin.patient.truncate');
     Route::get('/patientData/view', [WebController::class, 'admin_patient_view'])->name('admin.patient.view');
-    Route::get('/patientData/payment/{id}', [WebController::class, 'admin_payment'])->name('admin.payment');
     Route::get('/patientData/organize', [WebController::class, 'admin_patient_crud'])->name('admin.patient.crud');
     Route::get('/echarts', [DataCounter::class, 'echart']);
 });

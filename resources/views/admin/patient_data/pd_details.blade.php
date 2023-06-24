@@ -119,11 +119,7 @@
                             <div class="text-center">
                                 <button type="reset" class="btn btn-secondary"><a
                                         href="{{ route('admin.patient.view') }}" style="color: white">Back</a></button>
-                                <button type="submit" class="btn btn-danger"><a
-                                        href="{{ route('admin.payment', $patient->id) }}"
-                                        style="color: white">Payment</a></button>
                             </div>
-
                         </div>
                     </div>
                 </div>
