@@ -23,7 +23,12 @@ class Patient extends Model
     {
         return $this->belongsTo(Doctor::class);
     }
-    public function payment(): HasOne{
+    public function payment(): HasOne
+    {
         return $this->hasOne(Payment::class);
+    }
+    public function room(): BelongsTo
+    {
+        return $this->belongsTo(Room::class);
     }
 }

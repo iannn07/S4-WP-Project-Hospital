@@ -47,6 +47,18 @@ class WebController extends Controller
         $patient = Patient::all();
         return view('admin.admin_patient_crud', compact('user', 'patient'));
     }
+    public function admin_room_view(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $patient = Patient::all();
+        return view('admin.admin_room_view', compact('user', 'patient'));
+    }
+    public function admin_room_crud(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $patient = Patient::all();
+        return view('admin.admin_room_crud', compact('user', 'patient'));
+    }
     public function doctor_dashboard(Request $request)
     {
         $user = User::find(auth()->user()->id);

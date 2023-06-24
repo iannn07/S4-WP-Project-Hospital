@@ -93,3 +93,5 @@
         </div>
     </main>
 @section('script')
+@endsection
+@endsection

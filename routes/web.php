@@ -40,23 +40,33 @@ Route::group(['prefix' => 'employee'], function () {
 });
 
 Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:Admin']], function () {
+    // Hospital Account Management
     Route::get('/dashboard', [WebController::class, 'admin_dashboard'])->name('admin.dashboard');
     Route::get('/profile', [WebController::class, 'profile'])->name('admin.profile');
-    Route::get('/faq', [WebController::class, 'faq'])->name('admin.faq');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('admin.profile.update');
+    Route::get('/faq', [WebController::class, 'faq'])->name('admin.faq');
+
+
+    // Hospital Data Management - Doctor
     Route::get('/doctorTable', [WebController::class, 'admin_doctor_data'])->name('admin.doctor.table');
+
+    // Hospital Data Management - Patient
     Route::resource('/patientController', PatientController::class);
     Route::delete('/patientData/truncate', [DataCounter::class, 'truncate'])->name('admin.patient.truncate');
     Route::get('/patientData/view', [WebController::class, 'admin_patient_view'])->name('admin.patient.view');
     Route::get('/patientData/organize', [WebController::class, 'admin_patient_crud'])->name('admin.patient.crud');
+
+    // Hospital Data Management - Room
+    Route::get('/roomData/view', [WebController::class, 'admin_room_view'])->name('admin.room.view');
+    Route::get('/roomData/organize', [WebController::class, 'admin_room_crud'])->name('admin.room.crud');
     Route::get('/echarts', [DataCounter::class, 'echart']);
 });
 
 Route::group(['prefix' => '/doctor', 'middleware' => ['auth', 'role:Doctor']], function () {
     Route::get('/dashboard', [WebController::class, 'doctor_dashboard'])->name('doctor.dashboard');
     Route::get('/profile', [WebController::class, 'profile'])->name('doctor.profile');
-    Route::get('/faq', [WebController::class, 'faq'])->name('doctor.faq');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('doctor.profile.update');
+    Route::get('/faq', [WebController::class, 'faq'])->name('doctor.faq');
     Route::get('/doctorTable', [WebController::class, 'doctor_table_data'])->name('doctor.doctor.table');
     Route::get('/echarts', [DataCounter::class, 'echart']);
 });
