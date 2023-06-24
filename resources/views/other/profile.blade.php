@@ -81,6 +81,23 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-dpad-fill"></i><span>Room Data</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="charts-nav" class="nav-content collapse collapse" data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="{{ route('admin.room.view') }}">
+                                <i class="bi bi-circle"></i><span>View Room-Patient</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.room.crud') }}">
+                                <i class="bi bi-circle"></i><span>Organize Room</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             @elseif(auth()->user()->role === 'Doctor')
                 <a class="nav-link collapsed" href="{{ route('doctor.doctor.table') }}">
                     <i class="bi bi-table"></i><span>Doctor Data</span>

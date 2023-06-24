@@ -64,8 +64,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-hospital"></i><span>Patient</span><i
-                            class="bi bi-chevron-down ms-auto"></i>
+                        <i class="bi bi-hospital"></i><span>Patient</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="tables-nav" class="nav-content collapse collapse" data-bs-parent="#sidebar-nav">
                         <li>
@@ -76,6 +75,23 @@
                         <li>
                             <a href="{{ route('admin.patient.crud') }}">
                                 <i class="bi bi-circle"></i><span>Organize Patient</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-dpad-fill"></i><span>Room Data</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="charts-nav" class="nav-content collapse collapse" data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="{{ route('admin.room.view') }}">
+                                <i class="bi bi-circle"></i><span>View Room-Patient</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.room.crud') }}">
+                                <i class="bi bi-circle"></i><span>Organize Room</span>
                             </a>
                         </li>
                     </ul>
@@ -167,7 +183,8 @@
                                             Omnis fugiat quis repellendus?
                                         </button>
                                     </h2>
-                                    <div id="faqsOne-2" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                                    <div id="faqsOne-2" class="accordion-collapse collapse"
+                                        data-bs-parent="#faq-group-1">
                                         <div class="accordion-body">
                                             In minus quia impedit est quas deserunt deserunt et. Nulla non quo dolores
                                             minima fugiat aut saepe aut inventore. Qui nesciunt odio officia beatae iusto
