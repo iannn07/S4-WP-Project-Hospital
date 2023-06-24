@@ -150,7 +150,7 @@
                                             <td>
                                                 <div class="d-flex">
                                                     <span>Rp.</span>
-                                                    <span class="d-flex justify-content-end" style="width: 150px;">{{ number_format($patient_index->payment->full_amount, 0, ',', '.') }}</span>
+                                                    <span class="d-flex justify-content-end" style="width: 50px;">{{ number_format($patient_index->payment->full_amount, 0, ',', '.') }}</span>
                                                   </div>
                                             </td>
                                             <td>
