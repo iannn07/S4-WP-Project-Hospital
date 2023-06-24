@@ -17,7 +17,8 @@
                     <div class="col-md-12">
                         <label for="phone" class="form-label">Phone</label>
                         <input type="text" class="form-control" id="phone" name="phone"
-                            value="{{ $patient->phone }}">
+                            value="{{ $patient->phone }}"
+                            onkeypress="return (event.charCode >= 48 && event.charCode <= 57) ? true : false">
                     </div>
                     <div class="col-12">
                         <label for="address" class="form-label">Address</label>
@@ -47,6 +48,12 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="col-md-6 text-center" style="margin: 0 auto; margin-top: 16px">
+                        <label for="payment" class="form-label">Total Payment</label>
+                        <input type="type" for="payment" id="payment" name="payment" class="form-control"
+                            value="{{ $patient->payment->full_amount }}"
+                            onkeypress="return (event.charCode >= 48 && event.charCode <= 57) ? true : false">
+                    </div>
                     <br>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -59,3 +66,5 @@
         </div>
     </main>
 @section('script')
+@endsection
+@endsection
