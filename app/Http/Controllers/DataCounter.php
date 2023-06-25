@@ -15,9 +15,11 @@ class DataCounter extends Controller
     {
         $countDoctor = Doctor::query()->count();
         $countPatient = Patient::query()->count();
+        $countRoom = Room::query()->count();
         return response()->json([
             'doctor' => $countDoctor,
             'patient' => $countPatient,
+            'room' => $countRoom,
         ]);
     }
     /**

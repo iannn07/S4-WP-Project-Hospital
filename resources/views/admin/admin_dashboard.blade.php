@@ -132,24 +132,23 @@
                                     </div>
                                 </div>
                             </div>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    // Fetch data from the server
+                                    fetch('/admin/echarts')
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            const countDoctor = data.doctor ?? 0;
+                                            const doctorValue = document.getElementById('doctorValue');
+                                            doctorValue.textContent = countDoctor;
+                                        })
+                                        .catch(error => {
+                                            // Handle the error if the fetch request fails
+                                            console.error('Error:', error);
+                                        });
+                                });
+                            </script>
                         </div><!-- End Doctor Card -->
-
-                        <script>
-                            document.addEventListener("DOMContentLoaded", function() {
-                                // Fetch data from the server
-                                fetch('/admin/echarts')
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        const countDoctor = data.doctor ?? 0;
-                                        const doctorValue = document.getElementById('doctorValue');
-                                        doctorValue.textContent = countDoctor;
-                                    })
-                                    .catch(error => {
-                                        // Handle the error if the fetch request fails
-                                        console.error('Error:', error);
-                                    });
-                            });
-                        </script>
 
                         <!-- Patient Card -->
                         <div class="col-xxl-4 col-md-6">
@@ -168,64 +167,58 @@
                                     </div>
                                 </div>
                             </div>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    // Fetch data from the server
+                                    fetch('/admin/echarts')
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            const countPatient = data.patient ?? 0;
+                                            const patientValue = document.getElementById('patientValue');
+                                            patientValue.textContent = countPatient;
+                                        })
+                                        .catch(error => {
+                                            // Handle the error if the fetch request fails
+                                            console.error('Error:', error);
+                                        });
+                                });
+                            </script>
                         </div><!-- End Patient Card -->
 
-                        <script>
-                            document.addEventListener("DOMContentLoaded", function() {
-                                // Fetch data from the server
-                                fetch('/admin/echarts')
-                                    .then(response => response.json())
-                                    .then(data => {
-                                        const countPatient = data.patient ?? 0;
-                                        const patientValue = document.getElementById('patientValue');
-                                        patientValue.textContent = countPatient;
-                                    })
-                                    .catch(error => {
-                                        // Handle the error if the fetch request fails
-                                        console.error('Error:', error);
-                                    });
-                            });
-                        </script>
-
-                        <!-- Customers Card -->
+                        <!-- Room Card -->
                         <div class="col-xxl-4 col-xl-12">
-
                             <div class="card info-card customers-card">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i
-                                            class="bi bi-three-dots"></i></a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="#">Today</a></li>
-                                        <li><a class="dropdown-item" href="#">This Month</a></li>
-                                        <li><a class="dropdown-item" href="#">This Year</a></li>
-                                    </ul>
-                                </div>
-
                                 <div class="card-body">
-                                    <h5 class="card-title">Customers <span>| This Year</span></h5>
+                                    <h5 class="card-title">Room</h5>
 
                                     <div class="d-flex align-items-center">
                                         <div
                                             class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-people"></i>
+                                            <i class="bi bi-activity"></i>
                                         </div>
-                                        <div class="ps-3">
-                                            <h6>1244</h6>
-                                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                                                class="text-muted small pt-2 ps-1">decrease</span>
-
+                                        <div class="ps-3 d-flex align-items-center justify-content-center flex-grow-1">
+                                            <h6 id="roomValue" style="font-size: 28px"></h6>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-
-                        </div><!-- End Customers Card -->
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    // Fetch data from the server
+                                    fetch('/admin/echarts')
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            const countRoom = data.room ?? 0;
+                                            const roomValue = document.getElementById('roomValue');
+                                            roomValue.textContent = countRoom;
+                                        })
+                                        .catch(error => {
+                                            // Handle the error if the fetch request fails
+                                            console.error('Error:', error);
+                                        });
+                                });
+                            </script>
+                        </div><!-- End Room Card -->
 
                         <!-- Reports -->
                         <div class="col-12">
@@ -489,7 +482,7 @@
 
                 <!-- Right side columns -->
                 <div class="col-lg-4">
-                    <!-- Website Traffic -->
+                    <!-- Hospital Data -->
                     <div class="card">
                         <div class="card-body pb-0">
                             <h5 class="card-title">Hospital Data</h5>
@@ -514,6 +507,13 @@
                                                 chartData.push({
                                                     value: data.patient,
                                                     name: 'Patient'
+                                                });
+                                            }
+
+                                            if (data.room > 0) {
+                                                chartData.push({
+                                                    value: data.room,
+                                                    name: 'Room'
                                                 });
                                             }
 

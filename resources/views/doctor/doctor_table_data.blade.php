@@ -111,6 +111,7 @@
                                         <th class="col-3">Name</th>
                                         <th class="col-3">Email</th>
                                         <th class="col-3">License</th>
+                                        <th class="col-3">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody style="font-size: 10px;">
