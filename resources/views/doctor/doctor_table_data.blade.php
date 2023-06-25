@@ -93,6 +93,16 @@
                         <div class="card-body">
                             <h5 class="card-title">Doctor Data for Doctor</h5>
 
+                            {{-- Add New Data Button --}}
+                            <div class="d-flex justify-content-start">
+                                <label class="btn btn-primary btn-md" title="Add New Data" style="margin-bottom: 16px">
+                                    <a href="{{ route('doctorController.create') }}">
+                                        <i class="bi bi-plus-square upload-icon" style="margin-right: 8px"></i>
+                                        <span style="color: white">Add Doctor</span>
+                                    </a>
+                                </label>
+                            </div>
+
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
@@ -110,6 +120,23 @@
                                             <td>{{ $doctor_index->name }}</td>
                                             <td>{{ $doctor_index->email }}</td>
                                             <td>{{ $doctor_index->license }}</td>
+                                            <td>
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{ route('patientController.edit', $doctor_index->id) }}"
+                                                        class="mx-2 btn btn-warning btn-sm" style="color: black"><i
+                                                            class="bi bi-pencil"></i></a>
+                                                    <form id="delete-journey"
+                                                        action="{{ route('patientController.destroy', $doctor_index->id) }}"
+                                                        method="POST" style="display: inline-block;">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="mx-2 btn btn-danger btn-sm"
+                                                            onclick="return confirm('Are you sure you want to delete this patient?\n\nTHIS ACTION CANNOT BE UNDONE\n\nYou will delete {{ $doctor_index->name }} with the ID {{ $doctor_index->id }}')">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

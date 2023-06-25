@@ -17,7 +17,7 @@ class DoctorController extends Controller
     public function index()
     {
         $data = Doctor::all();
-        return view('doctor.doctor_index', compact('data'));
+        return view('doctor.doctor_table_data', compact('data'));
     }
 
     /**
@@ -56,7 +56,8 @@ class DoctorController extends Controller
      */
     public function edit(string $id)
     {
-        abort(404);
+        $data = Doctor::findOrFail($id);
+        return view('doctor.doctor_index', compact('data'));
     }
 
     /**

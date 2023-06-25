@@ -114,8 +114,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Patient Data Organizer</h5>
 
+                            {{-- MAIN CONTROLLER BUTTON --}}
                             <p>Click This Button below to add <b>New Patient</b></p>
-
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-start">
@@ -154,7 +154,6 @@
                                         <th class="col-2">Address</th>
                                         <th class="col-2">Total</th>
                                         <th class="col-2">Action</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -203,6 +202,7 @@
             </div>
         </section>
     </main>
+
     @section('footer')
     @endsection
     @section('script')

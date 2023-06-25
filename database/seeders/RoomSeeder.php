@@ -17,8 +17,6 @@ class RoomSeeder extends Seeder
      */
     public function run(): void
     {
-        $patientIDs = DB::table('patients')->pluck('id');
-        $faker = Faker::create('en_US');
         $roomTypes = [
             'General Ward',
             'Private Room',
@@ -33,11 +31,9 @@ class RoomSeeder extends Seeder
             'Radiology Room',
         ];
 
-        foreach ($patientIDs as $patientID) {
+        foreach ($roomTypes as $roomType) {
             Room::create([
-                'id' => Uuid::uuid4()->toString(),
-                'patient_id' => $patientID,
-                'room_type' => $faker->randomElement($roomTypes),
+                'room_type' => $roomType,
                 'created_at' => Carbon::now()->timezone('Asia/Jakarta'),
                 'updated_at' => Carbon::now()->timezone('Asia/Jakarta'),
             ]);

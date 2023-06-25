@@ -20,6 +20,12 @@ return new class extends Migration
                 ->on('doctors')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->unsignedBigInteger('room_id');
+            $table->foreign('room_id')
+                ->references('id')
+                ->on('rooms')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->BigInteger('phone');
             $table->string('address');
             $table->date('dob');

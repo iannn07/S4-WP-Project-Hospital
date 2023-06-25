@@ -93,8 +93,59 @@
         </ul>
 
     </aside><!-- End Sidebar-->
-@section('footer')
-@endsection
-@section('script')
-@endsection
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Room Data</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                    <li class="breadcrumb-item">Tables</li>
+                    <li class="breadcrumb-item active">Room Data</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Room Data</h5>
+                            <p><b>Current total of the patient:</b> {{ $patient }}</p>
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <th class="col-1">ID</th>
+                                        <th class="col-5">Name</th>
+                                        <th class="col-3">Patient Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="font-size: 10px;">
+                                    @forelse ($room as $room_index)
+                                        <tr>
+                                            <td>{{ $room_index->id }}</td>
+                                            <td>{{ $room_index->room_type }}</td>
+                                            <td>{{ $room_index->room_patient->count() }}</td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="100%" align="center" style="font-size: 16px">No Data</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    @section('footer')
+    @endsection
+    @section('script')
+    @endsection
 @endsection

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Models\Patient;
+use App\Models\Room;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -18,7 +20,6 @@ class DataCounter extends Controller
             'patient' => $countPatient,
         ]);
     }
-
     /**
      * Truncate the entire table.
      *

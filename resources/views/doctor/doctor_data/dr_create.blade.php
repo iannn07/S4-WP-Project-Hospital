@@ -58,7 +58,7 @@
                             <option>F</option>
                         </select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-6">
                         <label for="doctor" class="form-label">Doctor</label>
                         <select id="doctor" class="form-select" name="doctor">
                             @foreach ($doctor as $doctors)
@@ -66,18 +66,6 @@
                                     value="{{ $doctors->id }}
                             {{ old('doctor_id') == $doctors->id ? 'selected' : '' }}">
                                     {{ $doctors->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="room" class="form-label">Room</label>
-                        <select id="room" class="form-select" name="room">
-                            @foreach ($room as $rooms)
-                                <option
-                                    value="{{ $rooms->id }}
-                            {{ old('room_id') == $rooms->id ? 'selected' : '' }}">
-                                    {{ $rooms->room_type }}
                                 </option>
                             @endforeach
                         </select>

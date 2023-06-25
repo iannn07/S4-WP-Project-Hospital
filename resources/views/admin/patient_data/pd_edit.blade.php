@@ -46,8 +46,8 @@
                     </div>
                     <div class="col-md-4">
                         <label for="date" class="form-label">Date of Birth</label>
-                        <input type="date" class="form-control" id="date" name="date"
-                            value="{{ $patient->dob }}" required>
+                        <input type="date" class="form-control" id="date" name="date" value="{{ $patient->dob }}"
+                            required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -62,13 +62,25 @@
                             <option value="F" {{ $patient->gender == 'F' ? 'selected' : '' }}>F</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-2">
                         <label for="doctor" class="form-label">Doctor</label>
                         <select id="doctor" class="form-select" name="doctor">
                             @foreach ($doctor as $doctors)
                                 <option value="{{ $doctors->id }}"
                                     {{ $doctors->id == $patient->doctor_id ? 'selected' : '' }}>
                                     {{ $doctors->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="room" class="form-label">Room</label>
+                        <select id="room" class="form-select" name="room">
+                            @foreach ($room as $rooms)
+                                <option
+                                    value="{{ $rooms->id }}
+                            {{ old('room_id') == $rooms->id ? 'selected' : '' }}">
+                                    {{ $rooms->room_type }}
                                 </option>
                             @endforeach
                         </select>

@@ -79,7 +79,7 @@
                 </a>
                 <ul id="charts-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="{{ route('admin.room.view') }}" >
+                        <a href="{{ route('admin.room.view') }}">
                             <i class="bi bi-circle"></i><span>View Room-Patient</span>
                         </a>
                     </li>
@@ -93,8 +93,92 @@
         </ul>
 
     </aside><!-- End Sidebar-->
-@section('footer')
-@endsection
-@section('script')
-@endsection
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Room Data Organizer</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                    <li class="breadcrumb-item">Tables</li>
+                    <li class="breadcrumb-item active">Room Data Organizer</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Room Data Organizer</h5>
+
+                            {{-- MAIN CONTROLLER BUTTON --}}
+                            <p>Click This Button below to add <b>New Room</b></p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-start">
+                                        <label class="btn btn-primary btn-md" title="Add New Data"
+                                            style="margin-bottom: 16px">
+                                            <a href="{{ route('roomController.create') }}">
+                                                <i class="bi bi-plus-square upload-icon" style="margin-right: 8px"></i>
+                                                <span style="color: white">Add Room</span>
+                                            </a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <th class="col-1">ID</th>
+                                        <th class="col-2">Name</th>
+                                        <th class="col-2">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($room as $room_index)
+                                        <tr>
+                                            <td>{{ $room_index->id }}</td>
+                                            <td>{{ $room_index->room_type }}</td>
+                                            <td>
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{ route('roomController.edit', $room_index->id) }}"
+                                                        class="mx-2 btn btn-warning btn-sm" style="color: black"><i
+                                                            class="bi bi-pencil"></i></a>
+                                                    <form id="delete-journey"
+                                                        action="{{ route('roomController.destroy', $room_index->id) }}"
+                                                        method="POST" style="display: inline-block;">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="mx-2 btn btn-danger btn-sm"
+                                                            onclick="return confirm('Are you sure you want to delete this room and its children?\n\nTHIS ACTION CANNOT BE UNDONE\n\nYou will delete {{ $room_index->room_type }} with the ID {{ $room_index->id }}')">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="100%" align="center" style="font-size: 16px">No Data</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    @section('footer')
+    @endsection
+    @section('script')
+    @endsection
 @endsection

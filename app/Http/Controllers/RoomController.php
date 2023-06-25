@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -29,7 +30,11 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newRoom = new Room();
+        $newRoom->room_type = $request->name;
+        $newRoom->save();
+
+        return redirect()->route('admin.room.crud');
     }
 
     /**
@@ -37,8 +42,7 @@ class RoomController extends Controller
      */
     public function show(string $id)
     {
-        $user = User::find(auth()->user()->id);
-        return view('admin.room_data.rd_details', compact('user'));
+        abort(404);
     }
 
     /**
@@ -47,7 +51,8 @@ class RoomController extends Controller
     public function edit(string $id)
     {
         $user = User::find(auth()->user()->id);
-        return view('admin.room_data.rd_edit', compact('user'));
+        $room = Room::findOrFail($id);
+        return view('admin.room_data.rd_edit', compact('user', 'room'));
     }
 
     /**
@@ -55,7 +60,11 @@ class RoomController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $updateRoom = Room::findOrFail($id);
+        $updateRoom->room_type = $request->name;
+        $updateRoom->save();
+
+        return redirect()->route('admin.room.crud');
     }
 
     /**
@@ -63,6 +72,9 @@ class RoomController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $deleteRoom = Room::findOrFail($id);
+        $deleteRoom->delete();
+
+        return redirect()->route('admin.room.crud');
     }
 }

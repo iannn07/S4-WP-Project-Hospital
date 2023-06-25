@@ -7,7 +7,7 @@
             <li class="nav-heading">Hospital Account</li>
             <li class="nav-item">
 
-                <a class="nav-link collapsed" href="{{ route('admin.dashboard') }}">
+                <a class="nav-link " href="{{ route('doctor.dashboard') }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
@@ -50,46 +50,9 @@
             </li><!-- End Contact Page Nav -->
 
             <li class="nav-heading">Hospital Data</li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('admin.doctor.table') }}">
-                    <i class="bi bi-table"></i><span>Doctor Data</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-hospital"></i><span>Patient Data</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ route('admin.patient.view') }}" class="active">
-                            <i class="bi bi-circle"></i><span>View Patients</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.patient.crud') }}">
-                            <i class="bi bi-circle"></i><span>Organize Patients</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-dpad-fill"></i><span>Room Data</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="charts-nav" class="nav-content collapse collapse" data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="{{ route('admin.room.view') }}">
-                            <i class="bi bi-circle"></i><span>View Room-Patient</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.room.crud') }}">
-                            <i class="bi bi-circle"></i><span>Organize Room</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            <a class="nav-link collapsed" href="{{ route('doctor.doctor.table') }}">
+                <i class="bi bi-table"></i><span>Doctor Data</span>
+            </a>
         </ul>
 
     </aside><!-- End Sidebar-->
@@ -109,15 +72,11 @@
                                 <label for="doctor" class="form-label">Doctor</label>
                                 <p class="form-control" style="text-align: center">{{ $patient->doctor->name }}</p>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-6">
                                 <label for="gender" class="form-label">Gender</label>
                                 <p class="form-control" style="text-align: center">{{ $patient->gender }}</p>
                             </div>
                             <div class="col-md-6">
-                                <label for="date" class="form-label">Placed on</label>
-                                <p class="form-control" style="text-align: center">{{ $patient->room->room_type }}</p>
-                            </div>
-                            <div class="col-md-4">
                                 <label for="date" class="form-label">Date of Birth</label>
                                 <p class="form-control" style="text-align: center">{{ $patient->dob }}</p>
                             </div>
@@ -147,7 +106,6 @@
             </div>
         </div>
     </main>
-
 @section('footer')
 @endsection
 @section('script')

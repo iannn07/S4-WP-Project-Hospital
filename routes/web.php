@@ -3,6 +3,7 @@
 use App\Http\Controllers\DataCounter;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
@@ -57,16 +58,23 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:Admin']], fun
     Route::get('/patientData/organize', [WebController::class, 'admin_patient_crud'])->name('admin.patient.crud');
 
     // Hospital Data Management - Room
+    Route::resource('/roomController', RoomController::class);
     Route::get('/roomData/view', [WebController::class, 'admin_room_view'])->name('admin.room.view');
     Route::get('/roomData/organize', [WebController::class, 'admin_room_crud'])->name('admin.room.crud');
     Route::get('/echarts', [DataCounter::class, 'echart']);
 });
 
 Route::group(['prefix' => '/doctor', 'middleware' => ['auth', 'role:Doctor']], function () {
+    // Hospital Account Management
     Route::get('/dashboard', [WebController::class, 'doctor_dashboard'])->name('doctor.dashboard');
     Route::get('/profile', [WebController::class, 'profile'])->name('doctor.profile');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('doctor.profile.update');
     Route::get('/faq', [WebController::class, 'faq'])->name('doctor.faq');
     Route::get('/doctorTable', [WebController::class, 'doctor_table_data'])->name('doctor.doctor.table');
+
+    // Hospital Doctor Management
+    Route::resource('/doctorController', DoctorController::class);
+
+    // Hospital Diagnose Management
     Route::get('/echarts', [DataCounter::class, 'echart']);
 });

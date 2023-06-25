@@ -18,6 +18,7 @@ class PatientSeeder extends Seeder
     public function run(): void
     {
         $doctorID = DB::table('doctors')->pluck('id');
+        $roomID = DB::table('rooms')->pluck('id');
         $faker = Faker::create('zh_CN');
         for ($i = 1; $i <= 100; $i++) {
             $randomNumber = $faker->unique()->numerify('#########');
@@ -25,6 +26,7 @@ class PatientSeeder extends Seeder
             Patient::create([
                 'name' => $faker->name,
                 'doctor_id' => $faker->randomElement($doctorID),
+                'room_id' => $faker->randomElement($roomID),
                 'phone' => $phone,
                 'address' => $faker->unique()->address,
                 'dob' => $faker->dateTimeThisCentury(),

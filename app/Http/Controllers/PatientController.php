@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Payment;
+use App\Models\Room;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
@@ -26,7 +27,8 @@ class PatientController extends Controller
     {
         $user = User::find(auth()->user()->id);
         $doctor = Doctor::all();
-        return view('admin.patient_data.pd_create', compact('user', 'doctor'));
+        $room = Room::all();
+        return view('admin.patient_data.pd_create', compact('user', 'doctor', 'room'));
     }
 
     /**
@@ -41,6 +43,7 @@ class PatientController extends Controller
             'date' => 'required',
             'gender' => 'required',
             'doctor' => 'required',
+            'room' => 'required',
             'payment' => 'required',
         ]);
 
@@ -51,6 +54,7 @@ class PatientController extends Controller
         $newPatient->dob = $validatedData['date'];
         $newPatient->gender = $validatedData['gender'];
         $newPatient->doctor_id = $validatedData['doctor'];
+        $newPatient->room_id = $validatedData['room'];
         $newPatient->save();
 
         $newPayment = new Payment();
@@ -68,9 +72,8 @@ class PatientController extends Controller
     public function show(string $id)
     {
         $user = User::find(auth()->user()->id);
-        $doctor = Doctor::all();
         $patient = Patient::findOrFail($id);
-        return view('admin.patient_data.pd_details', compact('user', 'doctor', 'patient'));
+        return view('admin.patient_data.pd_details', compact('user', 'patient'));
     }
 
     /**
@@ -80,8 +83,9 @@ class PatientController extends Controller
     {
         $user = User::find(auth()->user()->id);
         $doctor = Doctor::all();
+        $room = Room::all();
         $patient = Patient::findOrFail($id);
-        return view('admin.patient_data.pd_edit', compact('user', 'doctor', 'patient'));
+        return view('admin.patient_data.pd_edit', compact('user', 'doctor', 'room', 'patient'));
     }
 
     /**
@@ -96,6 +100,7 @@ class PatientController extends Controller
         $updatePatient->dob = $request->date;
         $updatePatient->gender = $request->gender;
         $updatePatient->doctor_id = $request->doctor;
+        $updatePatient->room_id = $request->room;
         $updatePatient->save();
 
         $updatePayment = Payment::where('patient_id', $id)->firstOrFail();
