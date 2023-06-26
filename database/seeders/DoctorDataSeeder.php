@@ -18,7 +18,6 @@ class DoctorDataSeeder extends Seeder
         $faker = Faker::create('en_US');
         for ($i = 1; $i <= 10; $i++) {
             Doctor::create([
-                'id' => $faker->unique()->numberBetween(100,999),
                 'name' => $faker->name,
                 'email' => $faker->unique()->email,
                 'license' => $faker->bothify('25########'),

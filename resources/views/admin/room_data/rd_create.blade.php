@@ -6,7 +6,7 @@
                 <h5 class="card-title">Add Room Form</h5>
 
                 <!-- Multi Columns Form -->
-                <form action="{{ route('roomController.store') }}" method="POST" class="row g-3 needs-validation"
+                <form action="{{ route('doctorController.store') }}" method="POST" class="row g-3 needs-validation"
                     novalidate>
                     @csrf
                     <div class="col-md-12">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-danger"><a href="{{ route('admin.room.crud') }}"
+                        <button type="reset" class="btn btn-danger"><a href="{{ route('doctor.doctor.table') }}"
                                 style="color: white">Back</a></button>
                     </div>
                 </form><!-- End Multi Columns Form -->

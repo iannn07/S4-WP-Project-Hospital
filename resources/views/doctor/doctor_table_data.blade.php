@@ -6,17 +6,12 @@
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-heading">Hospital Account</li>
             <li class="nav-item">
-                @if (auth()->user()->role === 'Admin')
-                    <a class="nav-link collapsed" href="{{ route('admin.dashboard') }}">
-                        <i class="bi bi-grid"></i>
-                        <span>Dashboard</span>
-                    </a>
-                @elseif(auth()->user()->role === 'Doctor')
-                    <a class="nav-link collapsed" href="{{ route('doctor.dashboard') }}">
-                        <i class="bi bi-grid"></i>
-                        <span>Dashboard</span>
-                    </a>
-                @endif
+
+                <a class="nav-link collapsed" href="{{ route('doctor.dashboard') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
@@ -55,16 +50,9 @@
             </li><!-- End Contact Page Nav -->
 
             <li class="nav-heading">Hospital Data</li>
-
-            @if (auth()->user()->role === 'Admin')
-                <a class="nav-link " href="{{ route('admin.doctor.table') }}">
-                    <i class="bi bi-table"></i><span>Doctor Data</span>
-                </a>
-            @elseif(auth()->user()->role === 'Doctor')
-                <a class="nav-link " href="{{ route('doctor.doctor.table') }}">
-                    <i class="bi bi-table"></i><span>Doctor Data</span>
-                </a>
-            @endif
+            <a class="nav-link " href="{{ route('doctor.doctor.table') }}">
+                <i class="bi bi-table"></i><span>Doctor Data</span>
+            </a>
         </ul>
     </aside><!-- End Sidebar-->
 
@@ -74,11 +62,7 @@
             <h1>Doctor Data for Doctor</h1>
             <nav>
                 <ol class="breadcrumb">
-                    @if (auth()->user()->role === 'Admin')
-                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                    @elseif(auth()->user()->role === 'Doctor')
-                        <li class="breadcrumb-item"><a href="{{ route('doctor.dashboard') }}">Home</a></li>
-                    @endif
+                    <li class="breadcrumb-item"><a href="{{ route('doctor.dashboard') }}">Home</a></li>
                     <li class="breadcrumb-item">Tables</li>
                     <li class="breadcrumb-item active">Doctor Data for Doctor</li>
                 </ol>
@@ -111,6 +95,7 @@
                                         <th class="col-3">Name</th>
                                         <th class="col-3">Email</th>
                                         <th class="col-3">License</th>
+                                        <th class="col-3">Patient Total</th>
                                         <th class="col-3">Action</th>
                                     </tr>
                                 </thead>
@@ -121,13 +106,14 @@
                                             <td>{{ $doctor_index->name }}</td>
                                             <td>{{ $doctor_index->email }}</td>
                                             <td>{{ $doctor_index->license }}</td>
+                                            <td>{{ $doctor_index->doctor_patient->count() }}</td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{ route('patientController.edit', $doctor_index->id) }}"
+                                                    <a href="{{ route('doctorController.edit', $doctor_index->id) }}"
                                                         class="mx-2 btn btn-warning btn-sm" style="color: black"><i
                                                             class="bi bi-pencil"></i></a>
                                                     <form id="delete-journey"
-                                                        action="{{ route('patientController.destroy', $doctor_index->id) }}"
+                                                        action="{{ route('doctorController.destroy', $doctor_index->id) }}"
                                                         method="POST" style="display: inline-block;">
                                                         @csrf
                                                         @method('delete')

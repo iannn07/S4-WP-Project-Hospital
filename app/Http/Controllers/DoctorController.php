@@ -3,21 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Doctor;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = Doctor::all();
-        return view('doctor.doctor_table_data', compact('data'));
+        abort(404);
     }
 
     /**
@@ -25,7 +21,8 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('doctor.doctor_create');
+        $user = User::find(auth()->user()->id);
+        return view('doctor.doctor_data.dr_create', compact('user'));
     }
 
     /**
@@ -33,14 +30,19 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'license' => 'required',
+            'email' => 'required',
+        ]);
+
         $newDoctor = new Doctor();
-        $newDoctor->id = $request->doctor_id;
-        $newDoctor->name = $request->doctor_name;
-        $newDoctor->email = $request->doctor_email;
-        $newDoctor->license = $request->doctor_license;
+        $newDoctor->name = $validatedData['name'];
+        $newDoctor->license = $validatedData['license'];
+        $newDoctor->email = $validatedData['email'];
         $newDoctor->save();
 
-        return redirect()->route('admin.doctor.table');
+        return redirect()->route('doctor.doctor.table');
     }
 
     /**
@@ -56,8 +58,9 @@ class DoctorController extends Controller
      */
     public function edit(string $id)
     {
-        $data = Doctor::findOrFail($id);
-        return view('doctor.doctor_index', compact('data'));
+        $user = User::find(auth()->user()->id);
+        $doctor = Doctor::findOrFail($id);
+        return view('doctor.doctor_data.dr_edit', compact('user', 'doctor'));
     }
 
     /**
@@ -65,7 +68,13 @@ class DoctorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        abort(404);
+        $updateDoctor = Doctor::findOrFail($id);
+        $updateDoctor->name = $request->name;
+        $updateDoctor->license = $request->license;
+        $updateDoctor->email = $request->email;
+        $updateDoctor->save();
+
+        return redirect()->route('doctor.doctor.table');
     }
 
     /**
@@ -73,6 +82,9 @@ class DoctorController extends Controller
      */
     public function destroy(string $id)
     {
-        abort(404);
+        $deleteDoctor = Doctor::findOrFail($id);
+        $deleteDoctor->delete();
+
+        return redirect()->route('doctor.doctor.table');
     }
 }

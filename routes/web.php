@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DataCounter;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;

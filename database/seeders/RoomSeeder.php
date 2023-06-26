@@ -18,11 +18,15 @@ class RoomSeeder extends Seeder
     public function run(): void
     {
         $roomTypes = [
-            'General Ward',
-            'Private Room',
+            'First Class Room',
+            'Second Class Room',
+            'Third Class Room',
+            'VIP Room',
+            'General Room',
+            'Pharmacy',
             'Intensive Care Unit (ICU)',
             'Operating Room',
-            'Emergency Room',
+            'Emergency Room (ER)',
             'Labor and Delivery Room',
             'Pediatric Ward',
             'Cardiac Care Unit (CCU)',
