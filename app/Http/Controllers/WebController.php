@@ -72,4 +72,11 @@ class WebController extends Controller
         $doctor = Doctor::all();
         return view('doctor.doctor_table_data', compact('user', 'doctor'));
     }
+    public function doctor_diagnosis(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $doctor = Doctor::all();
+        $patient = Patient::all();
+        return view('doctor.doctor_diagnosis', compact('user', 'doctor', 'patient'));
+    }
 }

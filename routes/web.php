@@ -71,10 +71,13 @@ Route::group(['prefix' => '/doctor', 'middleware' => ['auth', 'role:Doctor']], f
     Route::get('/profile', [WebController::class, 'profile'])->name('doctor.profile');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('doctor.profile.update');
     Route::get('/faq', [WebController::class, 'faq'])->name('doctor.faq');
-    Route::get('/doctorTable', [WebController::class, 'doctor_table_data'])->name('doctor.doctor.table');
 
     // Hospital Doctor Management
+    Route::get('/doctorTable', [WebController::class, 'doctor_table_data'])->name('doctor.doctor.table');
     Route::resource('/doctorController', DoctorController::class);
+
+    // Hospital Diagnosis Management
+    Route::get('/diagnosis', [WebController::class, 'doctor_diagnosis'])->name('doctor.doctor.diagnosis');
 
     // Hospital Diagnose Management
     Route::get('/echarts', [DataCounter::class, 'echart']);

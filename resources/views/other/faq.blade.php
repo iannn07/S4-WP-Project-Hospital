@@ -100,6 +100,9 @@
                 <a class="nav-link collapsed" href="{{ route('doctor.doctor.table') }}">
                     <i class="bi bi-table"></i><span>Doctor Data</span>
                 </a>
+                <a class="nav-link collapsed" href="{{ route('doctor.doctor.diagnosis') }}">
+                    <i class="bi bi-journal-medical"></i><span>Patient Diagnosis</span>
+                </a>
             @endif
         </ul>
 
