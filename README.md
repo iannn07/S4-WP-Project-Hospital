@@ -16,3 +16,8 @@ Admin Page  : https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template
 1. Chantika Riffka Rahmadhani Citra Karisma - 2502023650
 2. Dora Kalifa Dharmawan - 2540135473
 3. Pristian Budi Dharmawan - 2501983105 
+
+After several conditions, we changed the ERD to this
+
+#### FINAL ERD
+![FINAL ERD](https://github.com/iannn07/S4-WP-Project-Hospital/blob/main/REVISED%&%FINAL%ERD.png)
