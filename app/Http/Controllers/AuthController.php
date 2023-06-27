@@ -35,11 +35,41 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        if (! $token = auth()->attempt($validator->validated())) {
+        $credentials = $validator->validated();
+
+        if (! $token = Auth::guard('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
         return $this->createNewToken($token);
+    }
+
+    /**
+     * Register a User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function register(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|between:2,100',
+            'email' => 'required|string|email|max:100|unique:users',
+            'password' => 'required|string|confirmed|min:6',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
+        $user = User::create(array_merge(
+            $validator->validated(),
+            ['password' => bcrypt($request->password)]
+        ));
+
+        return response()->json([
+            'message' => 'User successfully registered',
+            'user' => $user
+        ], 201);
     }
 
     /**
@@ -50,7 +80,6 @@ class AuthController extends Controller
     public function logout()
     {
         auth()->logout();
-
         return response()->json(['message' => 'User successfully signed out']);
     }
 
@@ -61,7 +90,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->createNewToken(Auth::refresh());
+        return $this->createNewToken(Auth::guard('api')->refresh());
     }
 
     /**
@@ -84,10 +113,10 @@ class AuthController extends Controller
     protected function createNewToken($token)
     {
         return response()->json([
-            'user' => auth()->user(),
+            'user' => Auth::guard('api')->user(),
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => Auth::factory()->getTTL() * 60,
+            'expires_in' => Auth::guard('api')->factory()->getTTL() * 60,
         ]);
     }
 }
