@@ -18,7 +18,7 @@ class DoctorDataSeeder extends Seeder
         $faker = Faker::create('en_US');
         for ($i = 1; $i <= 10; $i++) {
             Doctor::create([
-                'name' => $faker->name,
+                'name' => 'Dr. ' . $faker->name . ', MD',
                 'email' => $faker->unique()->email,
                 'license' => $faker->bothify('25########'),
                 'created_at' => Carbon::now()->timezone('Asia/Jakarta'),

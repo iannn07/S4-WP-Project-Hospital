@@ -3,7 +3,7 @@
     <main id="main-add-patient" class="main-add-patient">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Add Patient Form</h5>
+                <h5 class="card-title">Edit Patient Form</h5>
 
                 <!-- Multi Columns Form -->
                 <form action="{{ route('patientController.update', $patient->id) }}" method="POST"

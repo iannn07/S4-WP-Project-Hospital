@@ -19,7 +19,7 @@ class PatientSeeder extends Seeder
     {
         $doctorID = DB::table('doctors')->pluck('id');
         $roomID = DB::table('rooms')->pluck('id');
-        $faker = Faker::create('zh_CN');
+        $faker = Faker::create('en_HK');
         for ($i = 1; $i <= 100; $i++) {
             $randomNumber = $faker->unique()->numerify('#########');
             $phone = "628" . $randomNumber;

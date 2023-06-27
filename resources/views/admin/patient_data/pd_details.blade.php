@@ -121,13 +121,20 @@
                                 <label for="date" class="form-label">Date of Birth</label>
                                 <p class="form-control" style="text-align: center">{{ $patient->dob }}</p>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label for="phone" class="form-label">Phone</label>
                                 <p class="form-control">{{ $patient->phone }}</p>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label for="address" class="form-label">Address</label>
                                 <p class="form-control">{{ $patient->address }}</p>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="diagnosis_description" class="form-label">Diagnosis Description</label>
+                                <p class="form-control"><b>Classified as:</b> {{ $patient->diagnosis->diagnosis }}
+                                    <br>
+                                    <br>
+                                    <b>Description:</b><br>{{ $patient->diagnosis->diagnosis_description }}</p>
                             </div>
                             <div class="col-md-6 text-center" style="margin: 0 auto;">
                                 <label for="payment" class="form-label">Total Payment</label>

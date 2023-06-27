@@ -3,7 +3,7 @@
     <main id="main-add-patient" class="main-add-patient">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Add Patient Form</h5>
+                <h5 class="card-title">Edit Doctor Form</h5>
 
                 <!-- Multi Columns Form -->
                 <form action="{{ route('doctorController.update', $doctor->id) }}" method="POST" class="row g-3 needs-validation"

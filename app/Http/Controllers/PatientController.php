@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diagnosis;
 use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Payment;
@@ -62,6 +63,13 @@ class PatientController extends Controller
         $newPayment->patient_id = $newPatient->id;
         $newPayment->full_amount = $validatedData['payment'];
         $newPayment->save();
+
+        $newDiagnosis = new Diagnosis();
+        $newDiagnosis->patient_id = $newPatient->id;
+        $newDiagnosis->doctor_id = $newPatient->doctor_id;
+        $newDiagnosis->diagnosis = 'N/A';
+        $newDiagnosis->diagnosis_description = 'N/A';
+        $newDiagnosis->save();
 
         return redirect()->route('admin.patient.crud');
     }

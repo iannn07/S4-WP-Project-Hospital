@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DataCounter;
+use App\Http\Controllers\DiagnosisController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
@@ -78,6 +79,7 @@ Route::group(['prefix' => '/doctor', 'middleware' => ['auth', 'role:Doctor']], f
 
     // Hospital Diagnosis Management
     Route::get('/diagnosis', [WebController::class, 'doctor_diagnosis'])->name('doctor.doctor.diagnosis');
+    Route::resource('/diagnosisController', DiagnosisController::class);
 
     // Hospital Diagnose Management
     Route::get('/echarts', [DataCounter::class, 'echart']);

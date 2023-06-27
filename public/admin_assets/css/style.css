@@ -1282,3 +1282,7 @@ h6 {
 .d-flex span.d-flex {
     text-align: right;
 }
+
+.form-label{
+    font-weight: bold;
+}

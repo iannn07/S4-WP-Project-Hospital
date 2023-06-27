@@ -31,4 +31,8 @@ class Patient extends Model
     {
         return $this->belongsTo(Room::class);
     }
+    public function diagnosis(): HasOne
+    {
+        return $this->hasOne(Diagnosis::class);
+    }
 }

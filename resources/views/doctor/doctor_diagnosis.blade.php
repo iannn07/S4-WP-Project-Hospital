@@ -62,12 +62,12 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Doctor Data for Doctor</h1>
+            <h1>Patient Data for Doctor</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('doctor.dashboard') }}">Home</a></li>
                     <li class="breadcrumb-item">Tables</li>
-                    <li class="breadcrumb-item active">Doctor Data for Doctor</li>
+                    <li class="breadcrumb-item active">Patient Data for Doctor</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
@@ -78,57 +78,48 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Doctor Data for Doctor</h5>
-
-                            {{-- Add New Data Button --}}
-                            <div class="d-flex justify-content-start">
-                                <label class="btn btn-primary btn-md" title="Add New Data" style="margin-bottom: 16px">
-                                    <a href="{{ route('doctorController.create') }}">
-                                        <i class="bi bi-plus-square upload-icon" style="margin-right: 8px"></i>
-                                        <span style="color: white">Add Doctor</span>
-                                    </a>
-                                </label>
-                            </div>
+                            <h5 class="card-title">Patient Data for Doctor</h5>
 
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th class="col-1">Doctor ID</th>
+                                        <th class="col-1">ID</th>
                                         <th class="col-3">Name</th>
-                                        <th class="col-3">Email</th>
-                                        <th class="col-3">License</th>
-                                        <th class="col-3">Patient Total</th>
+                                        <th class="col-3">PIC</th>
+                                        <th class="col-3">Diagnosis</th>
                                         <th class="col-3">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody style="font-size: 10px;">
-                                    @foreach ($doctor as $doctor_index)
+                                    @forelse ($patient as $patient_index)
                                         <tr>
-                                            <td>{{ $doctor_index->id }}</td>
-                                            <td>{{ $doctor_index->name }}</td>
-                                            <td>{{ $doctor_index->email }}</td>
-                                            <td>{{ $doctor_index->license }}</td>
-                                            <td>{{ $doctor_index->doctor_patient->count() }}</td>
+                                            <td>{{ $patient_index->id }}</td>
+                                            <td>{{ $patient_index->name }}</td>
+                                            <td>{{ $patient_index->doctor->name }}</td>
+                                            <td>{{ $patient_index->diagnosis->diagnosis }}
+                                            </td>
                                             <td>
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{ route('doctorController.edit', $doctor_index->id) }}"
-                                                        class="mx-2 btn btn-warning btn-sm" style="color: black"><i
-                                                            class="bi bi-pencil"></i></a>
-                                                    <form id="delete-journey"
-                                                        action="{{ route('doctorController.destroy', $doctor_index->id) }}"
-                                                        method="POST" style="display: inline-block;">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="mx-2 btn btn-danger btn-sm"
-                                                            onclick="return confirm('Are you sure you want to delete this patient?\n\nTHIS ACTION CANNOT BE UNDONE\n\nYou will delete {{ $doctor_index->name }} with the ID {{ $doctor_index->id }}')">
-                                                            <i class="bi bi-trash"></i>
-                                                        </button>
-                                                    </form>
+                                                    @if ($patient_index->diagnosis->diagnosis !== 'N/A')
+                                                        <a href="{{ route('diagnosisController.edit', $patient_index->id) }}"
+                                                            class="mx-2 btn btn-warning btn-sm" style="color: black">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </a>
+                                                    @else
+                                                        <a href="{{ route('diagnosisController.edit', $patient_index->id) }}"
+                                                            class="mx-2 btn btn-primary btn-sm" style="color: black">
+                                                            <i class="bi bi-plus-square upload-icon"></i>
+                                                        </a>
+                                                    @endif
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                            <td colspan="100%" align="center" style="font-size: 16px">No Data</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
@@ -140,8 +131,8 @@
             </div>
         </section>
     </main>
-@section('footer')
-@endsection
-@section('script')
-@endsection
+    @section('footer')
+    @endsection
+    @section('script')
+    @endsection
 @endsection

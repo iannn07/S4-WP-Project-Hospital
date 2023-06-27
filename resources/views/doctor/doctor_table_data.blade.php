@@ -103,7 +103,7 @@
                                     </tr>
                                 </thead>
                                 <tbody style="font-size: 10px;">
-                                    @foreach ($doctor as $doctor_index)
+                                    @forelse ($doctor as $doctor_index)
                                         <tr>
                                             <td>{{ $doctor_index->id }}</td>
                                             <td>{{ $doctor_index->name }}</td>
@@ -128,7 +128,11 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                            <td colspan="100%" align="center" style="font-size: 16px">No Data</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
@@ -140,8 +144,8 @@
             </div>
         </section>
     </main>
-@section('footer')
-@endsection
-@section('script')
-@endsection
+    @section('footer')
+    @endsection
+    @section('script')
+    @endsection
 @endsection
