@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class DataCounter extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function echart(Request $request)
     {
         $countDoctor = Doctor::query()->count();

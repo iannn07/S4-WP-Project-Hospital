@@ -21,15 +21,6 @@ use App\Http\Controllers\WebController;
 |
 */
 
-// Route::get('/', function () {
-//     return redirect('/home');
-// });
-
-// Route::group(['prefix' => 'home'], function () {
-//     Route::get('/', function () {
-//         return view('home');
-//     })->name('home');
-// });
 
 Auth::routes(['register' => false]);
 
