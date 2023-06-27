@@ -20,4 +20,4 @@ Admin Page  : https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template
 After several conditions, we changed the ERD to this
 
 #### FINAL ERD
-![FINAL ERD](https://github.com/iannn07/S4-WP-Project-Hospital/blob/main/REVISED%&%FINAL%ERD.png)
+![FINAL ERD](https://github.com/iannn07/S4-WP-Project-Hospital/blob/main/REVISED%20%26%20FINAL%20ERD.png)
