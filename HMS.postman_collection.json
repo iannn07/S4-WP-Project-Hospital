@@ -1,0 +1,1406 @@
+{
+	"info": {
+		"_postman_id": "b8733529-3dea-4d0d-af20-f7df47bd0ce0",
+		"name": "WebProgramming - HMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26577186"
+	},
+	"item": [
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "AUTH",
+					"item": [
+						{
+							"name": "Login - Admin",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg2NDE1NTk2LCJleHAiOjE2ODY0MTkxOTYsIm5iZiI6MTY4NjQxNTU5NiwianRpIjoiZm1YdTJ1alM0RXpxVkdZcSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.3Eh194BQW3zMIZWJCNpr0DbQWKrB7KSWXsaFmGaSwek",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "roottoor",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/login",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTc0LCJleHAiOjE2ODc5NzE1NzQsIm5iZiI6MTY4Nzk2Nzk3NCwianRpIjoiZnNoM252R0ZSUnFVQ3lhdCIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.uUh304evAHM1vrmyNde3bFe3AyNy98z9M0wCriPwJww",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "roottoor",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/refresh",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout - Admin",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZnJlc2giLCJpYXQiOjE2ODc5Njc5NzQsImV4cCI6MTY4Nzk3MTU4MiwibmJmIjoxNjg3OTY3OTgyLCJqdGkiOiI5NDNyVWE3OGtHR29rUndqIiwic3ViIjoiYmMxNWZhY2MtMjAwMy00NzY4LWIxY2ItMDYzOGJiNzRiN2MyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.APeHWBYzB4Y50gS2vtAmMpPc_ffDS3UVN9nQjF1v7j0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "roottoor",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/logout",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "Display Profile Details",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTkzLCJleHAiOjE2ODc5NzE1OTMsIm5iZiI6MTY4Nzk2Nzk5MywianRpIjoiZUpYUXExVWxjRzJzak9yRiIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1FUtoO59sQEgrLfrG3Zj5WX5RstscGyOvxxz0iBhlp8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/profile",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Profile Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTkzLCJleHAiOjE2ODc5NzE1OTMsIm5iZiI6MTY4Nzk2Nzk5MywianRpIjoiZUpYUXExVWxjRzJzak9yRiIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1FUtoO59sQEgrLfrG3Zj5WX5RstscGyOvxxz0iBhlp8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Admin HMS Ganteng\",\r\n    \"email\" : \"admin@gmail.com\",\r\n    \"about\" : \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/profile-update/bc15facc-2003-4768-b1cb-0638bb74b7c2",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"profile-update",
+										"bc15facc-2003-4768-b1cb-0638bb74b7c2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "[SECOND] Room Data",
+					"item": [
+						{
+							"name": "Read All Room",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTkzLCJleHAiOjE2ODc5NzE1OTMsIm5iZiI6MTY4Nzk2Nzk5MywianRpIjoiZUpYUXExVWxjRzJzak9yRiIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1FUtoO59sQEgrLfrG3Zj5WX5RstscGyOvxxz0iBhlp8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/room-data",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"room-data"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read Specific Room",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTkzLCJleHAiOjE2ODc5NzE1OTMsIm5iZiI6MTY4Nzk2Nzk5MywianRpIjoiZUpYUXExVWxjRzJzak9yRiIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1FUtoO59sQEgrLfrG3Zj5WX5RstscGyOvxxz0iBhlp8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/room-details/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"room-details",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a Room",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTkzLCJleHAiOjE2ODc5NzE1OTMsIm5iZiI6MTY4Nzk2Nzk5MywianRpIjoiZUpYUXExVWxjRzJzak9yRiIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1FUtoO59sQEgrLfrG3Zj5WX5RstscGyOvxxz0iBhlp8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"name\": \"First Class Room\"\r\n    },\r\n    {\r\n        \"name\": \"Second Class Room\"\r\n    },\r\n    {\r\n        \"name\": \"Third Class Room\"\r\n    },\r\n    {\r\n        \"name\": \"VIP Room\"\r\n    },\r\n    {\r\n        \"name\": \"General Room\"\r\n    },\r\n    {\r\n        \"name\": \"Pharmacy\"\r\n    },\r\n    {\r\n        \"name\": \"Intensive Care Unit (ICU)\"\r\n    },\r\n    {\r\n        \"name\": \"Operating Room\"\r\n    },\r\n    {\r\n        \"name\": \"Emergency Room (ER)\"\r\n    },\r\n    {\r\n        \"name\": \"Labor and Delivery Room\"\r\n    },\r\n    {\r\n        \"name\": \"Pediatric Ward\"\r\n    },\r\n    {\r\n        \"name\": \"Cardiac Care Unit (CCU)\"\r\n    },\r\n    {\r\n        \"name\": \"Recovery Room\"\r\n    },\r\n    {\r\n        \"name\": \"Isolation Room\"\r\n    },\r\n    {\r\n        \"name\": \"Radiology Room\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/room-new",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"room-new"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a Room",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTkzLCJleHAiOjE2ODc5NzE1OTMsIm5iZiI6MTY4Nzk2Nzk5MywianRpIjoiZUpYUXExVWxjRzJzak9yRiIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1FUtoO59sQEgrLfrG3Zj5WX5RstscGyOvxxz0iBhlp8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Super First Class Room\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/room-update/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"room-update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a Room",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTkzLCJleHAiOjE2ODc5NzE1OTMsIm5iZiI6MTY4Nzk2Nzk5MywianRpIjoiZUpYUXExVWxjRzJzak9yRiIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1FUtoO59sQEgrLfrG3Zj5WX5RstscGyOvxxz0iBhlp8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/room-delete/15",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"room-delete",
+										"15"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "[THIRD] Patient Data",
+					"item": [
+						{
+							"name": "Read All Patient",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTkzLCJleHAiOjE2ODc5NzE1OTMsIm5iZiI6MTY4Nzk2Nzk5MywianRpIjoiZUpYUXExVWxjRzJzak9yRiIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1FUtoO59sQEgrLfrG3Zj5WX5RstscGyOvxxz0iBhlp8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/patient-data",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"patient-data"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read Specific Patient",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTkzLCJleHAiOjE2ODc5NzE1OTMsIm5iZiI6MTY4Nzk2Nzk5MywianRpIjoiZUpYUXExVWxjRzJzak9yRiIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1FUtoO59sQEgrLfrG3Zj5WX5RstscGyOvxxz0iBhlp8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/patient-details/12",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"patient-details",
+										"12"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a Patient",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTkzLCJleHAiOjE2ODc5NzE1OTMsIm5iZiI6MTY4Nzk2Nzk5MywianRpIjoiZUpYUXExVWxjRzJzak9yRiIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1FUtoO59sQEgrLfrG3Zj5WX5RstscGyOvxxz0iBhlp8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"name\": \"Ian\",\r\n        \"phone\": 628123456789,\r\n        \"address\": \"56 Tung Hong Pe Tsuen Sat Shit Tsik New Territories\",\r\n        \"date\": \"2023-06-28\",\r\n        \"gender\": \"M\",\r\n        \"doctor\": 1,\r\n        \"room\": 1,\r\n        \"payment\": 999999999\r\n    },\r\n    {\r\n        \"name\": \"John\",\r\n        \"phone\": 123456789012,\r\n        \"address\": \"123 Main Street, Anytown, CA 12345\",\r\n        \"date\": \"2023-07-02\",\r\n        \"gender\": \"M\",\r\n        \"doctor\": 1,\r\n        \"room\": 2,\r\n        \"payment\": 123456\r\n    },\r\n    {\r\n        \"name\": \"Jane\",\r\n        \"phone\": 987654321098,\r\n        \"address\": \"456 Elm Street, Anytown, CA 54321\",\r\n        \"date\": \"2023-07-03\",\r\n        \"gender\": \"F\",\r\n        \"doctor\": 3,\r\n        \"room\": 3,\r\n        \"payment\": 543210\r\n    },\r\n    {\r\n        \"name\": \"Mike\",\r\n        \"phone\": 111111111111,\r\n        \"address\": \"789 Park Avenue, Anytown, CA 98765\",\r\n        \"date\": \"2023-07-04\",\r\n        \"gender\": \"M\",\r\n        \"doctor\": 1,\r\n        \"room\": 4,\r\n        \"payment\": 111111\r\n    },\r\n    {\r\n        \"name\": \"Mary\",\r\n        \"phone\": 222222222222,\r\n        \"address\": \"654 Oak Street, Anytown, CA 87654\",\r\n        \"date\": \"2023-07-05\",\r\n        \"gender\": \"F\",\r\n        \"doctor\": 3,\r\n        \"room\": 5,\r\n        \"payment\": 222222\r\n    },\r\n    {\r\n        \"name\": \"Peter\",\r\n        \"phone\": 333333333333,\r\n        \"address\": \"987 Maple Street, Anytown, CA 76543\",\r\n        \"date\": \"2023-07-06\",\r\n        \"gender\": \"M\",\r\n        \"doctor\": 1,\r\n        \"room\": 6,\r\n        \"payment\": 333333\r\n    },\r\n    {\r\n        \"name\": \"Susan\",\r\n        \"phone\": 444444444444,\r\n        \"address\": \"876 Elm Street, Anytown, CA 65432\",\r\n        \"date\": \"2023-07-07\",\r\n        \"gender\": \"F\",\r\n        \"doctor\": 3,\r\n        \"room\": 7,\r\n        \"payment\": 444444\r\n    },\r\n    {\r\n        \"name\": \"David\",\r\n        \"phone\": 555555555555,\r\n        \"address\": \"765 Park Avenue, Anytown, CA 54321\",\r\n        \"date\": \"2023-07-08\",\r\n        \"gender\": \"M\",\r\n        \"doctor\": 1,\r\n        \"room\": 8,\r\n        \"payment\": 555555\r\n    },\r\n    {\r\n        \"name\": \"Emily\",\r\n        \"phone\": 666666666666,\r\n        \"address\": \"654 Oak Street, Anytown, CA 43210\",\r\n        \"date\": \"2023-07-09\",\r\n        \"gender\": \"F\",\r\n        \"doctor\": 3,\r\n        \"room\": 9,\r\n        \"payment\": 666666\r\n    },\r\n    {\r\n        \"name\": \"Chris\",\r\n        \"phone\": 777777777777,\r\n        \"address\": \"987 Maple Street, Anytown, CA 32100\",\r\n        \"date\": \"2023-07-10\",\r\n        \"gender\": \"M\",\r\n        \"doctor\": 1,\r\n        \"room\": 10,\r\n        \"payment\": 77777\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/patient-new",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"patient-new"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a Patient",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTkzLCJleHAiOjE2ODc5NzE1OTMsIm5iZiI6MTY4Nzk2Nzk5MywianRpIjoiZUpYUXExVWxjRzJzak9yRiIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1FUtoO59sQEgrLfrG3Zj5WX5RstscGyOvxxz0iBhlp8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Caca\",\r\n    \"phone\": 628123456789,\r\n    \"address\": \"56 Tung Hong Pe Tsuen Sat Shit Tsik New Territories\",\r\n    \"date\": \"2023-06-28\",\r\n    \"gender\": \"F\",\r\n    \"doctor\": 1,\r\n    \"room\": 1,\r\n    \"payment\": 999999999\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/patient-update/11",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"patient-update",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a Patient",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3OTkzLCJleHAiOjE2ODc5NzE1OTMsIm5iZiI6MTY4Nzk2Nzk5MywianRpIjoiZUpYUXExVWxjRzJzak9yRiIsInN1YiI6ImJjMTVmYWNjLTIwMDMtNDc2OC1iMWNiLTA2MzhiYjc0YjdjMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.1FUtoO59sQEgrLfrG3Zj5WX5RstscGyOvxxz0iBhlp8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/admin/patient-delete/11",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"admin",
+										"patient-delete",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "DOCTOR",
+			"item": [
+				{
+					"name": "AUTH",
+					"item": [
+						{
+							"name": "Login - Doctor",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg2NDE1NTk2LCJleHAiOjE2ODY0MTkxOTYsIm5iZiI6MTY4NjQxNTU5NiwianRpIjoiZm1YdTJ1alM0RXpxVkdZcSIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.3Eh194BQW3zMIZWJCNpr0DbQWKrB7KSWXsaFmGaSwek",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "doctor@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "toorroot",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/login",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3NzM1LCJleHAiOjE2ODc5NzEzMzUsIm5iZiI6MTY4Nzk2NzczNSwianRpIjoiNGlscklnUjJDb0xIZWNXWSIsInN1YiI6IjZkNzE4ZmJjLTg0OTMtNDg2Yi04OWY1LWQ5YTU1MDAyYmIyMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.l-upmu_2wotILBLEiY8_J65StnBDPPv29WH9SQGO6CI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "roottoor",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/refresh",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout - Doctor",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3JlZnJlc2giLCJpYXQiOjE2ODc5Njc3MzUsImV4cCI6MTY4Nzk3MTM0MywibmJmIjoxNjg3OTY3NzQzLCJqdGkiOiJ2bkwxRlhqNExiYjF0cmhpIiwic3ViIjoiNmQ3MThmYmMtODQ5My00ODZiLTg5ZjUtZDlhNTUwMDJiYjIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.RvQm7mZGOYVpv1u7T6X8uERifGkIQVkeKeHJ-fyaKfA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "roottoor",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/logout",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "Display Profile Details",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3NzU3LCJleHAiOjE2ODc5NzEzNTcsIm5iZiI6MTY4Nzk2Nzc1NywianRpIjoiMzg2Wm92MW1QSGNIRFpHQyIsInN1YiI6IjZkNzE4ZmJjLTg0OTMtNDg2Yi04OWY1LWQ5YTU1MDAyYmIyMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.F1tqa_rb-eerrOL4OmGqUBhV8G6PbmuEAQzCHs_F1ZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/doctor/profile",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"doctor",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Profile Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3NzU3LCJleHAiOjE2ODc5NzEzNTcsIm5iZiI6MTY4Nzk2Nzc1NywianRpIjoiMzg2Wm92MW1QSGNIRFpHQyIsInN1YiI6IjZkNzE4ZmJjLTg0OTMtNDg2Yi04OWY1LWQ5YTU1MDAyYmIyMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.F1tqa_rb-eerrOL4OmGqUBhV8G6PbmuEAQzCHs_F1ZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Dr. Ian\",\r\n    \"email\" : \"doctor@gmail.com\",\r\n    \"about\" : \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/doctor/profile-update/6d718fbc-8493-486b-89f5-d9a55002bb22",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"doctor",
+										"profile-update",
+										"6d718fbc-8493-486b-89f5-d9a55002bb22"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "[FIRST] Doctor Data",
+					"item": [
+						{
+							"name": "Read All Doctor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3NzU3LCJleHAiOjE2ODc5NzEzNTcsIm5iZiI6MTY4Nzk2Nzc1NywianRpIjoiMzg2Wm92MW1QSGNIRFpHQyIsInN1YiI6IjZkNzE4ZmJjLTg0OTMtNDg2Yi04OWY1LWQ5YTU1MDAyYmIyMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.F1tqa_rb-eerrOL4OmGqUBhV8G6PbmuEAQzCHs_F1ZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/doctor/doctor-data",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"doctor",
+										"doctor-data"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read Specific Doctor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3NzU3LCJleHAiOjE2ODc5NzEzNTcsIm5iZiI6MTY4Nzk2Nzc1NywianRpIjoiMzg2Wm92MW1QSGNIRFpHQyIsInN1YiI6IjZkNzE4ZmJjLTg0OTMtNDg2Yi04OWY1LWQ5YTU1MDAyYmIyMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.F1tqa_rb-eerrOL4OmGqUBhV8G6PbmuEAQzCHs_F1ZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/doctor/doctor-details/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"doctor",
+										"doctor-details",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a Doctor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3NzU3LCJleHAiOjE2ODc5NzEzNTcsIm5iZiI6MTY4Nzk2Nzc1NywianRpIjoiMzg2Wm92MW1QSGNIRFpHQyIsInN1YiI6IjZkNzE4ZmJjLTg0OTMtNDg2Yi04OWY1LWQ5YTU1MDAyYmIyMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.F1tqa_rb-eerrOL4OmGqUBhV8G6PbmuEAQzCHs_F1ZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"name\": \"Dr. Ian, MD\",\r\n        \"email\": \"ian@hms.com\",\r\n        \"license\": \"2501983105\"\r\n    },\r\n    {\r\n        \"name\": \"Dr. Lucy, MD\",\r\n        \"email\": \"lucy@hms.com\",\r\n        \"license\": \"2501234567\"\r\n    },\r\n    {\r\n        \"name\": \"Dr. Gunawan, MD\",\r\n        \"email\": \"gunawan@hms.com\",\r\n        \"license\": \"2510987654\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/doctor/doctor-new",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"doctor",
+										"doctor-new"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a Doctor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3NzU3LCJleHAiOjE2ODc5NzEzNTcsIm5iZiI6MTY4Nzk2Nzc1NywianRpIjoiMzg2Wm92MW1QSGNIRFpHQyIsInN1YiI6IjZkNzE4ZmJjLTg0OTMtNDg2Yi04OWY1LWQ5YTU1MDAyYmIyMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.F1tqa_rb-eerrOL4OmGqUBhV8G6PbmuEAQzCHs_F1ZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Dr. Pristian Budi Dharmawan, MD\",\r\n    \"email\" : \"ian@hms.com\",\r\n    \"license\" : \"2501983105\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/doctor/doctor-update/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"doctor",
+										"doctor-update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a Doctor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3NzU3LCJleHAiOjE2ODc5NzEzNTcsIm5iZiI6MTY4Nzk2Nzc1NywianRpIjoiMzg2Wm92MW1QSGNIRFpHQyIsInN1YiI6IjZkNzE4ZmJjLTg0OTMtNDg2Yi04OWY1LWQ5YTU1MDAyYmIyMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.F1tqa_rb-eerrOL4OmGqUBhV8G6PbmuEAQzCHs_F1ZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Dr. Ian Tita, MD\",\r\n    \"email\" : \"ian@gmail.com\",\r\n    \"license\" : \"2501983105\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/doctor/doctor-delete/2",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"doctor",
+										"doctor-delete",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "[FOURTH] Diagnose Data",
+					"item": [
+						{
+							"name": "Read All Diagnosis",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3NzU3LCJleHAiOjE2ODc5NzEzNTcsIm5iZiI6MTY4Nzk2Nzc1NywianRpIjoiMzg2Wm92MW1QSGNIRFpHQyIsInN1YiI6IjZkNzE4ZmJjLTg0OTMtNDg2Yi04OWY1LWQ5YTU1MDAyYmIyMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.F1tqa_rb-eerrOL4OmGqUBhV8G6PbmuEAQzCHs_F1ZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/doctor/diagnose-data",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"doctor",
+										"diagnose-data"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Read Specific Diagnosis",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3NzU3LCJleHAiOjE2ODc5NzEzNTcsIm5iZiI6MTY4Nzk2Nzc1NywianRpIjoiMzg2Wm92MW1QSGNIRFpHQyIsInN1YiI6IjZkNzE4ZmJjLTg0OTMtNDg2Yi04OWY1LWQ5YTU1MDAyYmIyMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.F1tqa_rb-eerrOL4OmGqUBhV8G6PbmuEAQzCHs_F1ZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/doctor/diagnose-details/12",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"doctor",
+										"diagnose-details",
+										"12"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update a Diagnosis",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNjg3OTY3NzU3LCJleHAiOjE2ODc5NzEzNTcsIm5iZiI6MTY4Nzk2Nzc1NywianRpIjoiMzg2Wm92MW1QSGNIRFpHQyIsInN1YiI6IjZkNzE4ZmJjLTg0OTMtNDg2Yi04OWY1LWQ5YTU1MDAyYmIyMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.F1tqa_rb-eerrOL4OmGqUBhV8G6PbmuEAQzCHs_F1ZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"diagnosis\" : \"Pneumonia\",\r\n    \"description\" : \"Severe hard breathing\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/doctor/diagnose-update/12",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"doctor",
+										"diagnose-update",
+										"12"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

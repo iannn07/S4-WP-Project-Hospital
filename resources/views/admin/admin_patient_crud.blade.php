@@ -163,12 +163,8 @@
                                             <td>{{ $patient_index->name }}</td>
                                             <td>{{ $patient_index->phone }}</td>
                                             <td>{{ $patient_index->address }}</td>
-                                            <td>
-                                                <div class="d-flex">
-                                                    <span>Rp.</span>
-                                                    <span class="d-flex justify-content-end"
-                                                        style="width: 50px;">{{ number_format($patient_index->payment->full_amount, 0, ',', '.') }}</span>
-                                                </div>
+                                            <td><span>Rp.
+                                                    {{ number_format($patient_index->payment->full_amount, 0, ',', '.') }}</span>
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-center">

@@ -18,7 +18,11 @@ class RoleAccess
         if (auth()->user()->role == $userRole) {
             return $next($request);
         }
-        session()->flash("error", "You ain't our employee");
-        return redirect('/login');
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        } else {
+            session()->flash("error", "You ain't our employee");
+            return redirect('/login');
+        }
     }
 }

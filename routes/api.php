@@ -1,6 +1,11 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\API\AuthController as APIAuthController;
+use App\Http\Controllers\API\DoctorController as APIDoctorController;
+use App\Http\Controllers\API\ProfileController as APIProfileController;
+use App\Http\Controllers\API\RoomController as APIRoomController;
+use App\Http\Controllers\API\PatientController as APIPatientController;
+use App\Http\Controllers\API\DiagnoseController as APIDiagnoseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,57 +19,50 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(AuthController::class)->group(function () {
+Route::controller(APIAuthController::class)->group(function () {
     Route::post('login', 'login');
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
 });
 
 // Protected Routes
-// Route::group(['middleware' => 'auth:api'], function () {
+Route::group(['middleware' => 'auth:api'], function () {
 
-//     // Admin Routes
-//     Route::prefix('admin')->middleware(['role:Admin'])->group(function () {
-//         // Hospital Account Management
-//         Route::get('/dashboard', [WebController::class, 'admin_dashboard'])->name('admin.dashboard');
-//         Route::get('/profile', [WebController::class, 'profile'])->name('admin.profile');
-//         Route::put('/profile/update', [ProfileController::class, 'update'])->name('admin.profile.update');
-//         Route::get('/faq', [WebController::class, 'faq'])->name('admin.faq');
+    Route::prefix('admin')->middleware(['role:Admin'])->group(function () {
+        // Account Management
+        Route::get('profile', [APIProfileController::class, 'index']);
+        Route::put('profile-update/{id}', [APIProfileController::class, 'update']);
 
-//         // Hospital Data Management - Doctor
-//         Route::get('/doctorTable', [WebController::class, 'admin_doctor_data'])->name('admin.doctor.table');
+        // Room Data Management
+        Route::get('room-data', [APIRoomController::class, 'index']);
+        Route::get('room-details/{id}', [APIRoomController::class, 'show']);
+        Route::post('room-new', [APIRoomController::class, 'store']);
+        Route::put('room-update/{id}', [APIRoomController::class, 'update']);
+        Route::delete('room-delete/{id}', [APIRoomController::class, 'destroy']);
 
-//         // Hospital Data Management - Patient
-//         Route::resource('/patientController', PatientController::class);
-//         Route::delete('/patientData/truncate', [DataCounter::class, 'truncate'])->name('admin.patient.truncate');
-//         Route::get('/patientData/view', [WebController::class, 'admin_patient_view'])->name('admin.patient.view');
-//         Route::get('/patientData/organize', [WebController::class, 'admin_patient_crud'])->name('admin.patient.crud');
+        // Patient Data Management
+        Route::get('patient-data', [APIPatientController::class, 'index']);
+        Route::get('patient-details/{id}', [APIPatientController::class, 'show']);
+        Route::post('patient-new', [APIPatientController::class, 'store']);
+        Route::put('patient-update/{id}', [APIPatientController::class, 'update']);
+        Route::delete('patient-delete/{id}', [APIPatientController::class, 'destroy']);
+    });
 
-//         // Hospital Data Management - Room
-//         Route::resource('/roomController', RoomController::class);
-//         Route::get('/roomData/view', [WebController::class, 'admin_room_view'])->name('admin.room.view');
-//         Route::get('/roomData/organize', [WebController::class, 'admin_room_crud'])->name('admin.room.crud');
-//         Route::get('/echarts', [DataCounter::class, 'echart']);
-//     });
+    Route::prefix('doctor')->middleware(['role:Doctor'])->group(function () {
+        // Account Management
+        Route::get('profile', [APIProfileController::class, 'index']);
+        Route::put('profile-update/{id}', [APIProfileController::class, 'update']);
 
-//     // Doctor Routes
-//     Route::prefix('doctor')->middleware(['role:Doctor'])->group(function () {
-//         // Hospital Account Management
-//         Route::get('/dashboard', [WebController::class, 'doctor_dashboard'])->name('doctor.dashboard');
-//         Route::get('/profile', [WebController::class, 'profile'])->name('doctor.profile');
-//         Route::put('/profile/update', [ProfileController::class, 'update'])->name('doctor.profile.update');
-//         Route::get('/faq', [WebController::class, 'faq'])->name('doctor.faq');
+        // Doctor Data Management
+        Route::get('doctor-data', [APIDoctorController::class, 'index']);
+        Route::get('doctor-details/{id}', [APIDoctorController::class, 'show']);
+        Route::post('doctor-new', [APIDoctorController::class, 'store']);
+        Route::put('doctor-update/{id}', [APIDoctorController::class, 'update']);
+        Route::delete('doctor-delete/{id}', [APIDoctorController::class, 'destroy']);
 
-//         // Hospital Doctor Management
-//         Route::get('/doctorTable', [WebController::class, 'doctor_table_data'])->name('doctor.doctor.table');
-//         Route::resource('/doctorController', DoctorController::class);
-
-//         // Hospital Diagnosis Management
-//         Route::get('/diagnosis', [WebController::class, 'doctor_diagnosis'])->name('doctor.doctor.diagnosis');
-//         Route::resource('/diagnosisController', DiagnosisController::class);
-
-//         // Hospital Diagnose Management
-//         Route::get('/echarts', [DataCounter::class, 'echart']);
-//     });
-
-// });
+        // Diagnose Data Management
+        Route::get('diagnose-data', [APIDiagnoseController::class, 'index']);
+        Route::get('diagnose-details/{id}', [APIDiagnoseController::class, 'show']);
+        Route::put('diagnose-update/{id}', [APIDiagnoseController::class, 'update']);
+    });
+});

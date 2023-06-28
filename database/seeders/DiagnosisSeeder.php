@@ -21,11 +21,9 @@ class DiagnosisSeeder extends Seeder
         $patients = Patient::all();
 
         foreach ($patients as $patient) {
-            $doctor = Doctor::find($patient->doctor_id);
-
             Diagnosis::create([
                 'patient_id' => $patient->id,
-                'doctor_id' => $doctor->id,
+                'doctor_id' => $patient->doctor_id,
                 'diagnosis' => 'N/A',
                 'diagnosis_description' => 'N/A',
                 'created_at' => Carbon::now()->timezone('Asia/Jakarta'),

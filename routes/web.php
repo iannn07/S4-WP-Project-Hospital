@@ -40,7 +40,6 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:Admin']], fun
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('admin.profile.update');
     Route::get('/faq', [WebController::class, 'faq'])->name('admin.faq');
 
-
     // Hospital Data Management - Doctor
     Route::get('/doctorTable', [WebController::class, 'admin_doctor_data'])->name('admin.doctor.table');
 

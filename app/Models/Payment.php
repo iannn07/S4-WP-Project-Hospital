@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Payment extends Model
 {
     use HasFactory;
-
+    protected $casts = [
+        'id' => 'string',
+    ];
     protected $fillable = [
         'patient_id',
         'full_amount'
